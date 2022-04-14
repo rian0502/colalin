@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Colalin">
         <activity
+            android:name=".accountView.AccountActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
