@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.belajar.colalin.RegisterFragment"
+        android:name="com.belajar.colalin.accountView.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/fpasswordFragment"
-        android:name="com.belajar.colalin.FpasswordFragment"
+        android:name="com.belajar.colalin.accountView.FpasswordFragment"
         android:label="fragment_fpassword"
         tools:layout="@layout/fragment_fpassword" >
         <action
