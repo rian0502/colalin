@@ -8,6 +8,10 @@
     <string name="password">Password</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="don_t_have_on_account">Don\'t have on account?</string>
-    <string name="register">Register</string>
     <string name="your_username_id">Your username id</string>
+    <string name="create_username">Create username</string>
+    <string name="your_phone_number">Your phone number</string>
+    <string name="_62">+62</string>
+    <string name="phone_number">Phone number</string>
+    <string name="register">Register</string>
 </resources>

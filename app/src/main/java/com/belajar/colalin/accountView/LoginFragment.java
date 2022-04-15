@@ -4,14 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentLoginBinding;
 
@@ -36,9 +33,7 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         NavController controller = Navigation.findNavController(view);
         binding.textButtonForgotPassword.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
-
-        binding.buttonLogin.setOnClickListener(view1 -> {
-            controller.navigate(R.id.action_loginFragment_to_fpasswordFragment);
-        });
+        binding.buttonLogin.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
+        binding.textButtonCreateAccount.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
     }
 }

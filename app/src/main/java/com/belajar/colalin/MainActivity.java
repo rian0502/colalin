@@ -1,10 +1,8 @@
 package com.belajar.colalin;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.belajar.colalin.accountView.AccountActivity;
 import com.belajar.colalin.databinding.ActivityMainBinding;
 
