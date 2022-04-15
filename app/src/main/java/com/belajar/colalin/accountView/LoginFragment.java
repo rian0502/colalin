@@ -32,8 +32,9 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavController controller = Navigation.findNavController(view);
-        binding.textButtonForgotPassword.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
+        binding.textButtonForgotPassword.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
         binding.buttonLogin.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
         binding.textButtonCreateAccount.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
     }
+
 }
