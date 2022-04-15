@@ -9,7 +9,7 @@
         android:id="@+id/loginFragment"
         android:name="com.belajar.colalin.accountView.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
@@ -21,23 +21,25 @@
         android:id="@+id/registerFragment"
         android:name="com.belajar.colalin.accountView.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true"
-            app:destination="@id/loginFragment" />
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/fpasswordFragment"
         android:name="com.belajar.colalin.accountView.FpasswordFragment"
         android:label="fragment_fpassword"
-        tools:layout="@layout/fragment_fpassword" >
+        tools:layout="@layout/fragment_fpassword">
         <action
             android:id="@+id/action_fpasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>

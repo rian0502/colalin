@@ -1,11 +1,7 @@
 package com.belajar.colalin.accountView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import android.os.Bundle;
-import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityAccountBinding;
 
 
@@ -16,7 +12,6 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
     }
 
 }

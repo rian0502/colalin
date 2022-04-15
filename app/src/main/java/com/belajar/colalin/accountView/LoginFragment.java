@@ -1,5 +1,6 @@
 package com.belajar.colalin.accountView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentLoginBinding;
+import com.belajar.colalin.homeView.HomeActivity;
 
 
 public class LoginFragment extends Fragment {
@@ -33,8 +35,11 @@ public class LoginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         NavController controller = Navigation.findNavController(view);
         binding.textButtonForgotPassword.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
-        binding.buttonLogin.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
         binding.textButtonCreateAccount.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
+        binding.buttonLogin.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), HomeActivity.class);
+            startActivity(intent);
+        });
     }
 
 }
