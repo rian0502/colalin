@@ -17,7 +17,9 @@
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="20sp"
-            android:src="@drawable/browser" />
+            android:src="@drawable/browser"
+            android:scaleType="fitXY"
+            android:contentDescription="logo awal login" />
 
         <TextView
             android:layout_width="wrap_content"
