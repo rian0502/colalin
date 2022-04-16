@@ -1,23 +1,24 @@
 package com.belajar.colalin.homeView.CardAdapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.CardMenuBinding;
 import com.belajar.colalin.homeView.Models.ListMenu;
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ListMenuHolder> {
-    private ArrayList< ListMenu > data;
-    private Context context;
+    private final ArrayList< ListMenu > data;
+    private final Context context;
 
 
 
@@ -32,18 +33,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ListMenuHolder> {
         return new ListMenuHolder(CardMenuBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull Adapter.ListMenuHolder holder, int position) {
         ListMenu listMenu = data.get(position);
+        holder.binding.cardContainer.getBackground().setTint(listMenu.getColor());
         holder.binding.titleMenu.setText(listMenu.getTitle());
         holder.binding.deskriptionMenu.setText(listMenu.getDesc());
         Glide.with(context).load(listMenu.getImage()).into(holder.binding.imageMenu);
-        holder.binding.imageMenu.setOnClickListener(new OnItemClick(position, new OnItemClick.OnItemCallBack() {
-            @Override
-            public void OnItemClicked(View view, int position) {
-                Toast.makeText(context,data.get(position).getTitle(), Toast.LENGTH_SHORT).show();
-            }
-        }));
+        holder.binding.cardContainer.setOnClickListener(new OnItemClick(position, (view, position1) -> Toast.makeText(context,data.get(position1).getTitle() + " "+ position1, Toast.LENGTH_SHORT).show()));
     }
 
     @Override

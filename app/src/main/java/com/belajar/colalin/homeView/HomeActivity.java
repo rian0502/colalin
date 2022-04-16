@@ -25,5 +25,13 @@ public class HomeActivity extends AppCompatActivity {
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
         binding.containerViewHome.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        menus.clear();
+        super.onBackPressed();
+
     }
 }

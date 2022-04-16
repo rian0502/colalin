@@ -4,11 +4,21 @@ public class ListMenu {
     private String title;
     private String desc;
     private int image;
+    private int color;
 
-    public ListMenu(String title, String desc, int image) {
+    public ListMenu(String title, String desc, int image, int color) {
         this.title = title;
         this.desc = desc;
         this.image = image;
+        this.color = color;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 
     public String getTitle() {
