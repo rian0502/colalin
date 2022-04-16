@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/JA/tugas_akhir/app/src/main/res/drawable/icon_home.xml" value="0.2555" />
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/activity_account.xml" value="0.25" />
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -10,6 +11,7 @@
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/fragment_fpassword.xml" value="0.264" />
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/JA/tugas_akhir/app/src/main/res/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/JA/tugas_akhir/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
       </map>
     </option>
   </component>

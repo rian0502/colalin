@@ -38,7 +38,10 @@ public class LoginFragment extends Fragment {
         binding.textButtonCreateAccount.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
         binding.buttonLogin.setOnClickListener(view1 -> {
             Intent intent = new Intent(getActivity(), HomeActivity.class);
+            intent.putExtra("username",binding.inputUsername.getText().toString().trim());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+            getActivity().finish();
         });
     }
 

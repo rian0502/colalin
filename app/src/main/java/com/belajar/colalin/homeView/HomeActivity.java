@@ -3,7 +3,10 @@ package com.belajar.colalin.homeView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.belajar.colalin.databinding.ActivityHomeBinding;
 import com.belajar.colalin.homeView.CardAdapter.Adapter;
 import com.belajar.colalin.homeView.CardAdapter.ListData;
@@ -14,6 +17,8 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private ArrayList< ListMenu > menus;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
         binding.containerViewHome.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        menus.clear();
-        super.onBackPressed();
-
+        String data = getIntent().getStringExtra("username");
+        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
     }
 }
