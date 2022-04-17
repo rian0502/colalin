@@ -1,139 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".accountView.RegisterFragment">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:text="@string/register"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20sp"
+            android:contentDescription="logo register"
+            android:scaleType="fitXY"
+            android:src="@drawable/register" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/username"
+            android:layout_marginStart="20sp"
+            android:text="@string/register"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="10sp"
-            app:boxCornerRadiusBottomStart="10sp"
-            app:boxCornerRadiusTopEnd="10sp"
-            app:boxCornerRadiusTopStart="10sp"
-            app:boxStrokeColor="@color/black"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_username_register"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="35sp"
-                android:layout_marginEnd="40sp"
-                android:hint="@string/create_username"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/password"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="10sp"
-            app:boxCornerRadiusBottomStart="10sp"
-            app:boxCornerRadiusTopEnd="10sp"
-            app:boxCornerRadiusTopStart="10sp"
-            app:boxStrokeColor="@color/black"
-            app:hintEnabled="false"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_password_register"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="35sp"
-                android:layout_marginEnd="40sp"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
-            android:text="@string/phone_number"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="15sp"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:boxCornerRadiusBottomEnd="10sp"
-                app:boxCornerRadiusBottomStart="10sp"
-                app:boxCornerRadiusTopEnd="10sp"
-                app:boxCornerRadiusTopStart="10sp"
-                app:boxStrokeColor="@color/black"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="35sp"
-                    android:editable="false"
-                    android:enabled="false"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:text="@string/_62"
-                    tools:ignore="Deprecated" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="35dp"
+                android:text="@string/username"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -147,31 +56,137 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_phone_register"
+                    android:id="@+id/input_username_register"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20sp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="35sp"
                     android:layout_marginEnd="40sp"
-                    android:hint="@string/your_phone_number"
-                    android:inputType="number"
-                    android:maxLength="13"
+                    android:hint="@string/create_username"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxCornerRadiusBottomEnd="10sp"
+                app:boxCornerRadiusBottomStart="10sp"
+                app:boxCornerRadiusTopEnd="10sp"
+                app:boxCornerRadiusTopStart="10sp"
+                app:boxStrokeColor="@color/black"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_password_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="35sp"
+                    android:layout_marginEnd="40sp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:text="@string/phone_number"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10sp"
+                    app:boxCornerRadiusBottomStart="10sp"
+                    app:boxCornerRadiusTopEnd="10sp"
+                    app:boxCornerRadiusTopStart="10sp"
+                    app:boxStrokeColor="@color/black"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="35sp"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@string/_62"
+                        tools:ignore="Deprecated" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="10sp"
+                    app:boxCornerRadiusBottomStart="10sp"
+                    app:boxCornerRadiusTopEnd="10sp"
+                    app:boxCornerRadiusTopStart="10sp"
+                    app:boxStrokeColor="@color/black"
+                    app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_phone_register"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20sp"
+                        android:layout_marginEnd="40sp"
+                        android:hint="@string/your_phone_number"
+                        android:inputType="number"
+                        android:maxLength="13"
+                        android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40sp"
+            android:layout_marginTop="30sp"
+            android:layout_marginEnd="40sp"
+            android:backgroundTint="#066163"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            app:cornerRadius="10dp" />
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40sp"
-        android:layout_marginEnd="40sp"
-        android:layout_marginTop="30sp"
-        android:backgroundTint="#066163"
-        android:text="@string/register"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:cornerRadius="10dp" />
 
-
-</LinearLayout>
+</ScrollView>
