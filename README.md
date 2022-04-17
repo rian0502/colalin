@@ -9,7 +9,8 @@
 
 
 #ER DIAGRAM
-![image](https://user-images.githubusercontent.com/83405871/163702351-606a6431-9927-43e5-b7c6-c58a9af2c7e4.png)
+![image](https://user-images.githubusercontent.com/83405871/163702779-f46db923-2d00-4eab-916a-7865366b42d2.png)
+
 
  
                   
