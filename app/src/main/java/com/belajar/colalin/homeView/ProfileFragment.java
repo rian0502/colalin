@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.belajar.colalin.MainActivity;
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.AccountActivity;
+import com.belajar.colalin.accountView.Sessions.SessionManagement;
 import com.belajar.colalin.databinding.FragmentProfileBinding;
 
 public class ProfileFragment extends Fragment {
@@ -35,6 +36,8 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.buttonLogout.setOnClickListener(view1 -> {
+            SessionManagement sessionManagement = new SessionManagement(getActivity());
+            sessionManagement.removeSession();
             Intent intent = new Intent(getActivity(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);

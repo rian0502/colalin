@@ -26,6 +26,11 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         com.belajar.colalin.databinding.FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
+        if (menus.size() >= 4){
+            menus.remove(5);
+            menus.remove(4);
+            menus.remove(3);
+        }
         Adapter adapter = new Adapter(menus, getContext());
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
