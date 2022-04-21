@@ -3,6 +3,8 @@ package com.belajar.colalin.homeView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -21,10 +23,12 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         com.belajar.colalin.databinding.ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Bundle bundle = getIntent().getExtras();
         BottomNavigationView bottomNavigationView = binding.bottomNavigation;
         bottomNavigationView.setOnItemSelectedListener(navListener);
         ListData.addData();
         data = ListData.getData();
+        Toast.makeText(this, bundle.getString("username"), Toast.LENGTH_SHORT).show();
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_container, new HomeFragment(data)).commit();
         }

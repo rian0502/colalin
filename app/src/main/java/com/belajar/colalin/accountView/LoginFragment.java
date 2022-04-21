@@ -1,10 +1,7 @@
 package com.belajar.colalin.accountView;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +15,7 @@ import com.belajar.colalin.accountView.Sessions.SessionManagement;
 import com.belajar.colalin.accountView.Sessions.UserLogged;
 import com.belajar.colalin.databinding.FragmentLoginBinding;
 import com.belajar.colalin.homeView.HomeActivity;
+import java.util.Objects;
 
 
 public class LoginFragment extends Fragment {
@@ -44,7 +42,7 @@ public class LoginFragment extends Fragment {
         binding.buttonLogin.setOnClickListener(view1 -> {
             login();
             Intent intent = new Intent(getActivity(), HomeActivity.class);
-            intent.putExtra("username",binding.inputUsername.getText().toString().trim());
+            intent.putExtra("username", Objects.requireNonNull(binding.inputUsername.getText()).toString().trim());
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             getActivity().finish();
@@ -65,7 +63,7 @@ public class LoginFragment extends Fragment {
         String isUserLogged = sessionManagement.getSession();
         if (!isUserLogged.equals("null")){
             Intent intent = new Intent(getActivity(), HomeActivity.class);
-            intent.putExtra("username",binding.inputUsername.getText().toString().trim());
+            intent.putExtra("username",isUserLogged);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         }
