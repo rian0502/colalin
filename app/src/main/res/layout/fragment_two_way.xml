@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".homeView.Menus.FragmentTwoWay">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Jalan Raya dua arah" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="30sp"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/car_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/car"/>
 
-</FrameLayout>
+        <ImageButton
+            android:id="@+id/truck_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/delivery_truck"/>
+        <ImageButton
+            android:id="@+id/trailler_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/trailler"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/motor_button"
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/motorcycle"/>
+
+        <ImageButton
+            android:id="@+id/speda_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bicycle"/>
+        <ImageButton
+            android:id="@+id/pedes_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:background="@drawable/pedestrian"/>
+    </LinearLayout>
+</LinearLayout>

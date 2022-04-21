@@ -1,5 +1,6 @@
 package com.belajar.colalin.homeView;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,12 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment(ArrayList< ListMenu > menus) {
         this.menus = menus;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
