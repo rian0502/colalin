@@ -38,7 +38,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ListMenuHolder> {
     @NonNull
     @Override
     public Adapter.ListMenuHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ListMenuHolder(CardMenuBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
+        return new ListMenuHolder(CardMenuBinding.inflate(LayoutInflater.from(parent.getContext()),
+                parent, false));
     }
 
     @SuppressLint("ResourceAsColor")
