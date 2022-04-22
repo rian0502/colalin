@@ -24,7 +24,6 @@ public class LoginFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,19 +39,15 @@ public class LoginFragment extends Fragment {
         binding.textButtonForgotPassword.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_fpasswordFragment));
         binding.textButtonCreateAccount.setOnClickListener(view1 -> controller.navigate(R.id.action_loginFragment_to_registerFragment));
         binding.buttonLogin.setOnClickListener(view1 -> {
-            login();
-            Intent intent = new Intent(getActivity(), HomeActivity.class);
-            intent.putExtra("username", Objects.requireNonNull(binding.inputUsername.getText()).toString().trim());
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            getActivity().finish();
+            if (validateFrom()){
+                login();
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                intent.putExtra("username", Objects.requireNonNull(binding.inputUsername.getText()).toString().trim());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                getActivity().finish();
+            }
         });
-    }
-
-    private void login() {
-        UserLogged user = new UserLogged(binding.inputUsername.getText().toString(), 1);
-        SessionManagement sessionManagement = new SessionManagement(getActivity());
-        sessionManagement.saveSession(user);
     }
 
     @Override
@@ -68,4 +63,22 @@ public class LoginFragment extends Fragment {
             startActivity(intent);
         }
     }
+
+    private void login() {
+        UserLogged user = new UserLogged(binding.inputUsername.getText().toString(), 1);
+        SessionManagement sessionManagement = new SessionManagement(getActivity());
+        sessionManagement.saveSession(user);
+    }
+
+    private boolean validateFrom(){
+        if(binding.inputUsername.getText().toString().trim().isEmpty()){
+            binding.inputUsername.setError("Username harus di isi");
+            return false;
+        }else if(binding.inputPassword.getText().toString().trim().isEmpty()){
+            binding.inputPassword.setError("Password harus di isi");
+            return false;
+        }
+        return true;
+    }
+
 }

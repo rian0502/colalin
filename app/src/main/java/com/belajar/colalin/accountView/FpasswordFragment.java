@@ -37,6 +37,9 @@ public class FpasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
+        binding.buttonNext.setOnClickListener(view1 -> {
+            goneOTP();
+        });
     }
 
     @Override
@@ -49,5 +52,15 @@ public class FpasswordFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+    }
+    public void goneOTP(){
+        binding.inputPhoneForgot.setVisibility(View.GONE);
+        binding.imageForgot.setVisibility(View.GONE);
+        binding.buttonNext.setVisibility(View.GONE);
+        binding.imageOtp.setVisibility(View.VISIBLE);
+        binding.buttonVertivikasi.setVisibility(View.VISIBLE);
+    }
+    public void gonePhone(){
+
     }
 }
