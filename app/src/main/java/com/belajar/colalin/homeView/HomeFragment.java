@@ -11,14 +11,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.belajar.colalin.databinding.FragmentHomeBinding;
 import com.belajar.colalin.homeView.CardAdapter.Adapter;
+import com.belajar.colalin.homeView.CardAdapter.ListData;
 import com.belajar.colalin.homeView.Models.ListMenu;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
     private final ArrayList< ListMenu > menus;
-    public HomeFragment(ArrayList< ListMenu > menus) {
-        this.menus = menus;
+
+    public HomeFragment() {
+        ListData.addData();
+        menus = ListData.getData();
     }
 
     @Override
@@ -32,11 +35,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         com.belajar.colalin.databinding.FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
-        if (menus.size() >= 4){
-            menus.remove(5);
-            menus.remove(4);
-            menus.remove(3);
-        }
         Adapter adapter = new Adapter(menus, getContext());
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
@@ -49,4 +47,9 @@ public class HomeFragment extends Fragment {
 
     }
 
+    @Override
+    public void onDestroyView() {
+        menus.clear();
+        super.onDestroyView();
+    }
 }

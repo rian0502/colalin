@@ -3,21 +3,17 @@ package com.belajar.colalin.homeView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityHomeBinding;
-import com.belajar.colalin.homeView.CardAdapter.ListData;
-import com.belajar.colalin.homeView.Models.ListMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import java.util.ArrayList;
+
+
 
 public class HomeActivity extends AppCompatActivity {
-    private  ArrayList<ListMenu> data ;
     private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +23,8 @@ public class HomeActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         BottomNavigationView bottomNavigationView = binding.bottomNavigation;
         bottomNavigationView.setOnItemSelectedListener(navListener);
-        ListData.addData();
-        data = ListData.getData();
         if (savedInstanceState == null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_container, new HomeFragment(data)).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_container, new HomeFragment()).commit();
         }
     }
     NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
@@ -46,7 +40,7 @@ public class HomeActivity extends AppCompatActivity {
                     fragment = new ProfileFragment();
                     break;
                 case R.id.nav_home:
-                    fragment = new HomeFragment(data);
+                    fragment = new HomeFragment();
                     break;
             }
             assert fragment != null;
@@ -56,9 +50,4 @@ public class HomeActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    public void onBackPressed() {
-        data.clear();
-        super.onBackPressed();
-    }
 }

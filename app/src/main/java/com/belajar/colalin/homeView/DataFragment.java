@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,17 +12,17 @@ import com.belajar.colalin.databinding.FragmentDataBinding;
 import com.belajar.colalin.homeView.CardAdapter.AdapterData;
 import com.belajar.colalin.homeView.Models.DataCounter;
 import com.belajar.colalin.homeView.Models.ModelData;
-
 import java.util.ArrayList;
 
 
 public class DataFragment extends Fragment {
 
     private FragmentDataBinding binding;
-    private ArrayList< ModelData > modelData;
+    private final ArrayList< ModelData > modelData;
 
     public DataFragment() {
-        // Required empty public constructor
+        DataCounter.addData();
+        modelData = DataCounter.getKendaraan();
     }
 
     @Override
@@ -31,10 +30,6 @@ public class DataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentDataBinding.inflate(inflater, container, false);
-        modelData = new ArrayList<>();
-        DataCounter.addData();
-        modelData = DataCounter.getKendaraan();
-        Toast.makeText(getActivity(), ""+modelData.size(), Toast.LENGTH_SHORT).show();
         return binding.getRoot();
     }
 
