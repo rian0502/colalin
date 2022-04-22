@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private final ArrayList< ListMenu > menus;
-
     public HomeFragment(ArrayList< ListMenu > menus) {
         this.menus = menus;
     }

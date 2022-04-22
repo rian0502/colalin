@@ -18,17 +18,17 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     private  ArrayList<ListMenu> data ;
+    private Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         com.belajar.colalin.databinding.ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        Bundle bundle = getIntent().getExtras();
+        bundle = getIntent().getExtras();
         BottomNavigationView bottomNavigationView = binding.bottomNavigation;
         bottomNavigationView.setOnItemSelectedListener(navListener);
         ListData.addData();
         data = ListData.getData();
-        Toast.makeText(this, bundle.getString("username"), Toast.LENGTH_SHORT).show();
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_container, new HomeFragment(data)).commit();
         }
@@ -50,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
                     break;
             }
             assert fragment != null;
+            fragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_home_container, fragment).commit();
             return true;
         }

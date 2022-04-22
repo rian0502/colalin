@@ -26,7 +26,7 @@ public class FpasswordFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentFpasswordBinding.inflate(inflater, container, false);
@@ -37,9 +37,7 @@ public class FpasswordFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
-        binding.buttonNext.setOnClickListener(view1 -> {
-            goneOTP();
-        });
+        binding.buttonNext.setOnClickListener(view1 -> goneOTP());
     }
 
     @Override
@@ -59,8 +57,5 @@ public class FpasswordFragment extends Fragment {
         binding.buttonNext.setVisibility(View.GONE);
         binding.imageOtp.setVisibility(View.VISIBLE);
         binding.buttonVertivikasi.setVisibility(View.VISIBLE);
-    }
-    public void gonePhone(){
-
     }
 }
