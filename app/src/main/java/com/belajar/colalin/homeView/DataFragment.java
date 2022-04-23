@@ -4,21 +4,24 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.belajar.colalin.databinding.FragmentDataBinding;
 import com.belajar.colalin.homeView.CardAdapter.AdapterData;
 import com.belajar.colalin.homeView.Models.DataCounter;
 import com.belajar.colalin.homeView.Models.ModelData;
+
 import java.util.ArrayList;
 
 
 public class DataFragment extends Fragment {
 
-    private FragmentDataBinding binding;
     private final ArrayList< ModelData > modelData;
+    private FragmentDataBinding binding;
 
     public DataFragment() {
         DataCounter.addData();
@@ -36,7 +39,7 @@ public class DataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AdapterData data = new AdapterData(modelData);
+        AdapterData data = new AdapterData(modelData, getContext());
         binding.containerDataFragment.setHasFixedSize(true);
         binding.containerDataFragment.setAdapter(data);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));

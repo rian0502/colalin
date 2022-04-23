@@ -6,14 +6,24 @@ public class ModelData {
     private String data;
     private String jenis_jalan;
     private Kendaraan kendaraan;
+    private int imageResource;
 
 
-    public ModelData(String id, String location, String data, String jenis_jalan, Kendaraan kendaraan) {
+    public ModelData(String id, String location, String data, String jenis_jalan, Kendaraan kendaraan, int imageResource) {
         this.id = id;
         this.location = location;
         this.data = data;
         this.jenis_jalan = jenis_jalan;
         this.kendaraan = kendaraan;
+        this.imageResource = imageResource;
+    }
+
+    public int getImageResource() {
+        return imageResource;
+    }
+
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
     }
 
     public String getId() {

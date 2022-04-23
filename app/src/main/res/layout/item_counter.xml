@@ -16,49 +16,58 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10sp">
-
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/gambar_jalan"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:src="@drawable/one_way" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30sp"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/tv_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/sansita"
                 android:maxLines="1"
                 android:text="Location"
-                android:textSize="20dp"
+                android:textSize="17dp"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv_jenis_jalan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/artifika"
+                android:text="Jenis Jalan"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/tv_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/artifika"
                 android:text="Tanggal"
-                android:textSize="17dp"
-                android:textStyle="bold" />
+                android:textSize="12dp" />
 
-            <TextView
-                android:id="@+id/tv_jenis_jalan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:text="Jenis Jalan"
-                android:textSize="15dp"
-                android:textStyle="bold" />
         </LinearLayout>
+
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
             <ImageView
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:layout_marginStart="20dp"
                 android:layout_alignParentRight="true"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_fback" />
         </RelativeLayout>
     </LinearLayout>

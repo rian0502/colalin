@@ -10,7 +10,7 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.belajar.colalin.databinding.ActivityMenuBinding binding = ActivityMenuBinding.inflate(getLayoutInflater());
+        ActivityMenuBinding binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         Bundle bundle = getIntent().getExtras();
         changeFragment(bundle.getInt("pilihan"));

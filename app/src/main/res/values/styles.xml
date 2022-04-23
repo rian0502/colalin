@@ -5,4 +5,7 @@
         <item name="background">@color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="BottomNavigationTextStyle">
+        <item name="fontFamily">@font/sansita</item>
+    </style>
 </resources>
