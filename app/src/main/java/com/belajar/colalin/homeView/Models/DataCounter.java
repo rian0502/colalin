@@ -13,7 +13,7 @@ public class DataCounter {
                 "Bekasi Timur",
                 "22 april 2022",
                 "One Way",
-                new Kendaraan(1,2,3,4,5,6,
+                new Kendaraan(3,5,6,7,9,6,
                         7,8,9,10,11,12),
                 R.drawable.one_way
         ));

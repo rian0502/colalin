@@ -64,6 +64,7 @@
             android:layout_gravity="center">
 
             <ImageView
+                android:id="@+id/arrow_enter"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
                 android:layout_alignParentRight="true"

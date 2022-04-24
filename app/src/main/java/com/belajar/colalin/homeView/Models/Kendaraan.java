@@ -1,6 +1,10 @@
 package com.belajar.colalin.homeView.Models;
 
-public class Kendaraan {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Kendaraan implements Parcelable {
+
     private int golongan1;
     private int golongan2;
     private int golongan3;
@@ -28,6 +32,33 @@ public class Kendaraan {
         this.golongan7C = golongan7C;
         this.golongan8 = golongan8;
     }
+
+    protected Kendaraan(Parcel in) {
+        golongan1 = in.readInt();
+        golongan2 = in.readInt();
+        golongan3 = in.readInt();
+        golongan4 = in.readInt();
+        golongan5A = in.readInt();
+        golongan5B = in.readInt();
+        golongan6A = in.readInt();
+        golongan6B = in.readInt();
+        golongan7A = in.readInt();
+        golongan7B = in.readInt();
+        golongan7C = in.readInt();
+        golongan8 = in.readInt();
+    }
+
+    public static final Creator< Kendaraan > CREATOR = new Creator< Kendaraan >() {
+        @Override
+        public Kendaraan createFromParcel(Parcel in) {
+            return new Kendaraan(in);
+        }
+
+        @Override
+        public Kendaraan[] newArray(int size) {
+            return new Kendaraan[size];
+        }
+    };
 
     public int getGolongan1() {
         return golongan1;
@@ -123,5 +154,26 @@ public class Kendaraan {
 
     public void setGolongan8(int golongan8) {
         this.golongan8 = golongan8;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(golongan1);
+        parcel.writeInt(golongan2);
+        parcel.writeInt(golongan3);
+        parcel.writeInt(golongan4);
+        parcel.writeInt(golongan5A);
+        parcel.writeInt(golongan5B);
+        parcel.writeInt(golongan6A);
+        parcel.writeInt(golongan6B);
+        parcel.writeInt(golongan7A);
+        parcel.writeInt(golongan7B);
+        parcel.writeInt(golongan7C);
+        parcel.writeInt(golongan8);
     }
 }

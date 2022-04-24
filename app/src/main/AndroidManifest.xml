@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Colalin">
         <activity
+            android:name=".homeView.infoData.DataInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".homeView.profileMenu.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".homeView.Menus.MenuActivity"
             android:exported="false" />
         <activity

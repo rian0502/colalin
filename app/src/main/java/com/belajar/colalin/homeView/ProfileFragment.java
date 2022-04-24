@@ -2,21 +2,18 @@ package com.belajar.colalin.homeView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.belajar.colalin.MainActivity;
-import com.belajar.colalin.R;
-import com.belajar.colalin.accountView.AccountActivity;
 import com.belajar.colalin.accountView.Sessions.SessionManagement;
 import com.belajar.colalin.databinding.FragmentProfileBinding;
+import com.belajar.colalin.homeView.profileMenu.ProfileActivity;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
@@ -31,6 +28,7 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater, container, false);
+        assert this.getArguments() != null;
         binding.tvUsernameView.setText(this.getArguments().getString("username"));
         return binding.getRoot();
     }
@@ -47,6 +45,18 @@ public class ProfileFragment extends Fragment {
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             getActivity().finish();
+        });
+
+        binding.menuInfo.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+            intent.putExtra("menu", 0);
+            startActivity(intent);
+        });
+
+        binding.menuAbout.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+            intent.putExtra("menu", 1);
+            startActivity(intent);
         });
     }
 }

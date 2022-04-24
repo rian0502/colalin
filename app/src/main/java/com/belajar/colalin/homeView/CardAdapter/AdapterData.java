@@ -2,13 +2,17 @@ package com.belajar.colalin.homeView.CardAdapter;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.belajar.colalin.databinding.ItemCounterBinding;
 import com.belajar.colalin.homeView.Models.ModelData;
+import com.belajar.colalin.homeView.infoData.DataInfoActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -56,6 +60,13 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
         Glide.with(context)
                 .load(md.getImageResource())
                 .into(holder.itemCounterBinding.gambarJalan);
+        holder.itemCounterBinding.arrowEnter.setOnClickListener(new OnItemClick(position,((view, position1) -> {
+
+            Intent intent = new Intent(context, DataInfoActivity.class);
+            intent.putExtra("data", (Parcelable) md);
+            intent.putExtra("kendaraan", md.getKendaraan());
+            context.startActivity(intent);
+        })));
     }
 
     @Override
@@ -64,7 +75,7 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
     }
 
     public static class HolderData extends RecyclerView.ViewHolder {
-        private ItemCounterBinding itemCounterBinding;
+        private final ItemCounterBinding itemCounterBinding;
 
         public HolderData(@NonNull ItemCounterBinding itemCounterBinding) {
             super(itemCounterBinding.getRoot());
