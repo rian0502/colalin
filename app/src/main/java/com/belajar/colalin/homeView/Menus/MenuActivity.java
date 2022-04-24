@@ -23,10 +23,10 @@ public class MenuActivity extends AppCompatActivity {
                 fragment = new FragmentJalanTol();
                 break;
             case 1:
-                fragment = new FragmentOneWay();
+                fragment = new FragmentTwoWay();
                 break;
             case 2:
-                fragment = new FragmentTwoWay();
+                fragment = new FragmentOneWay();
                 break;
         }
         assert fragment != null;

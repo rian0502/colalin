@@ -1,7 +1,10 @@
 package com.belajar.colalin.homeView.Menus;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,58 +12,87 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.belajar.colalin.R;
+import com.belajar.colalin.databinding.FragmentJalanTolBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link FragmentJalanTol#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class FragmentJalanTol extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class FragmentJalanTol extends Fragment implements View.OnClickListener {
+    private int gol2, gol3, gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c;
+    private FragmentJalanTolBinding binding;
 
     public FragmentJalanTol() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment FragmentJalanTol.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static FragmentJalanTol newInstance(String param1, String param2) {
-        FragmentJalanTol fragment = new FragmentJalanTol();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jalan_tol, container, false);
+        binding = FragmentJalanTolBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bindingButtonClick();
+    }
+
+    public void bindingButtonClick() {
+        binding.golonganDua.setOnClickListener(this);
+        binding.golonganTiga.setOnClickListener(this);
+        binding.golonganEmpat.setOnClickListener(this);
+        binding.golonganLimaA.setOnClickListener(this);
+        binding.golonganLimaB.setOnClickListener(this);
+        binding.golonganEnamA.setOnClickListener(this);
+        binding.golonganEnamB.setOnClickListener(this);
+        binding.golonganTujuhA.setOnClickListener(this);
+        binding.golonganTujuhB.setOnClickListener(this);
+        binding.golonganTujuhC.setOnClickListener(this);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.golongan_dua:
+                gol2++;
+                binding.tvGol2.setText(String.valueOf(gol2));
+                break;
+            case R.id.golongan_tiga:
+                gol3++;
+                binding.tvGol3.setText(String.valueOf(gol3));
+                break;
+            case R.id.golongan_empat:
+                gol4++;
+                binding.tvGol4.setText(String.valueOf(gol4));
+                break;
+            case R.id.golongan_limaA:
+                gol5a++;
+                binding.tvGol5A.setText(String.valueOf(gol5a));
+                break;
+            case R.id.golongan_limaB:
+                gol5b++;
+                binding.tvGol5B.setText(String.valueOf(gol5b));
+                break;
+            case R.id.golongan_enamA:
+                gol6a++;
+                binding.tvGol6A.setText(String.valueOf(gol6a));
+                break;
+            case R.id.golongan_enamB:
+                gol6b++;
+                binding.tvGol6B.setText(String.valueOf(gol6b));
+                break;
+            case R.id.golongan_tujuhA:
+                gol7a++;
+                binding.tvGol7A.setText(String.valueOf(gol7a));
+                break;
+            case R.id.golongan_tujuhB:
+                gol7b++;
+                binding.tvGol7B.setText(String.valueOf(gol7b));
+                break;
+            case R.id.golongan_tujuhC:
+                gol7c++;
+                binding.tvGol7C.setText(String.valueOf(gol7c));
+                break;
+        }
     }
 }
