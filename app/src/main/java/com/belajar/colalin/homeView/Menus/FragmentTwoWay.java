@@ -2,19 +2,17 @@ package com.belajar.colalin.homeView.Menus;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.belajar.colalin.R;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import com.belajar.colalin.databinding.FragmentTwoWayBinding;
 
 
 public class FragmentTwoWay extends Fragment {
 
-
+    private FragmentTwoWayBinding binding;
     public FragmentTwoWay() {
         // Required empty public constructor
     }
@@ -27,10 +25,12 @@ public class FragmentTwoWay extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_two_way, container, false);
+        binding = FragmentTwoWayBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
+
 
 }

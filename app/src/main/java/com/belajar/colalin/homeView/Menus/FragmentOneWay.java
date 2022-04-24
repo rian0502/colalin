@@ -1,6 +1,7 @@
 package com.belajar.colalin.homeView.Menus;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,12 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
 
     public FragmentOneWay() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
