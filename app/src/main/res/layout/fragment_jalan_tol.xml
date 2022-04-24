@@ -1,14 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".homeView.Menus.FragmentJalanTol">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Jalan Tol" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_dua"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 2"
+            app:icon="@drawable/car"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_tiga"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 3"
+            app:icon="@drawable/minibus"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_empat"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Gol - 4"
+            app:icon="@drawable/pickup"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_limaA"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 5A"
+            app:icon="@drawable/big_bus"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_limaB"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 5B"
+            app:icon="@drawable/bus_comm"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_enamA"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Gol - 6A"
+            app:icon="@drawable/truck_ba"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_enamB"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 6B"
+            app:icon="@drawable/truck6b"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_tujuhA"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30sp"
+            android:text="Gol - 7A"
+            app:icon="@drawable/truck_7a"
+            app:iconGravity="textTop"
+            app:iconSize="50sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/golongan_tujuhB"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Gol - 7B"
+            app:icon="@drawable/truck_7b"
+            app:iconGravity="textTop"
+            app:iconSize="130px" />
+    </LinearLayout>
+</LinearLayout>
