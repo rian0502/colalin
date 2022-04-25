@@ -5,7 +5,7 @@ import com.belajar.colalin.R;
 import java.util.ArrayList;
 
 public class DataCounter {
-    private static ArrayList<ModelData> kendaraan = new ArrayList<>();
+    private static final ArrayList<ModelData> kendaraan = new ArrayList<>();
 
     public static void addData(){
         kendaraan.add(new ModelData(
@@ -76,7 +76,7 @@ public class DataCounter {
                 "Karawang Timur",
                 "3 juli 2022",
                 "One Way",
-                new Kendaraan(1,2,3,4,5,6,
+                new Kendaraan(10,8,12,7,5,9,
                         7,8,9,10,11,12),
                 R.drawable.one_way
         ));
