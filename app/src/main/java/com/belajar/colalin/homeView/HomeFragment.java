@@ -20,9 +20,10 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private final ArrayList< ListMenu > menus;
+    private  ArrayList< ListMenu > menus = new ArrayList<>();
 
     public HomeFragment() {
+        ListData.getData().clear();
         ListData.addData();
         menus = ListData.getData();
     }
@@ -51,11 +52,5 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-    }
-
-    @Override
-    public void onDestroyView() {
-        menus.clear();
-        super.onDestroyView();
     }
 }

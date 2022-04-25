@@ -1,6 +1,7 @@
 package com.belajar.colalin.homeView;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ public class DataFragment extends Fragment {
     private FragmentDataBinding binding;
 
     public DataFragment() {
+        DataCounter.getKendaraan().clear();
         DataCounter.addData();
         modelData = DataCounter.getKendaraan();
     }
@@ -43,11 +45,5 @@ public class DataFragment extends Fragment {
         binding.containerDataFragment.setHasFixedSize(true);
         binding.containerDataFragment.setAdapter(data);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    @Override
-    public void onDestroyView() {
-        modelData.clear();
-        super.onDestroyView();
     }
 }
