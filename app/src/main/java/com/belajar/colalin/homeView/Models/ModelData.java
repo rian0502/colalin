@@ -97,9 +97,9 @@ public class ModelData implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(this.id);
+        parcel.writeString(this.location);
         parcel.writeString(this.data);
         parcel.writeString(this.jenis_jalan);
-        parcel.writeString(this.location);
         parcel.writeInt(this.imageResource);
     }
 }

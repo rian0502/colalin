@@ -20,6 +20,7 @@ import com.belajar.colalin.databinding.FragmentFpasswordBinding;
 public class FpasswordFragment extends Fragment {
     private FragmentFpasswordBinding binding;
     private NavController navController;
+
     public FpasswordFragment() {
         // Required empty public constructor
     }
@@ -51,11 +52,20 @@ public class FpasswordFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
-    public void goneOTP(){
+
+    public void goneOTP() {
         binding.inputPhoneForgot.setVisibility(View.GONE);
         binding.imageForgot.setVisibility(View.GONE);
         binding.buttonNext.setVisibility(View.GONE);
+        binding.tvForgotPassword.setVisibility(View.GONE);
+        binding.etCountryCode.setVisibility(View.GONE);
+        binding.tvPhoneNumber.setVisibility(View.GONE);
+
         binding.imageOtp.setVisibility(View.VISIBLE);
         binding.buttonVertivikasi.setVisibility(View.VISIBLE);
+        binding.tvSendingOTP.setVisibility(View.VISIBLE);
+        binding.tvOTP.setVisibility(View.VISIBLE);
+        binding.inputOtp.setVisibility(View.VISIBLE);
+        binding.layoutOtpInput.setVisibility(View.VISIBLE);
     }
 }

@@ -61,9 +61,8 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
                 .load(md.getImageResource())
                 .into(holder.itemCounterBinding.gambarJalan);
         holder.itemCounterBinding.arrowEnter.setOnClickListener(new OnItemClick(position,((view, position1) -> {
-
             Intent intent = new Intent(context, DataInfoActivity.class);
-            intent.putExtra("data", (Parcelable) md);
+            intent.putExtra("data", md);
             intent.putExtra("kendaraan", md.getKendaraan());
             context.startActivity(intent);
         })));

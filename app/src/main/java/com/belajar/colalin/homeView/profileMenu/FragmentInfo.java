@@ -1,7 +1,9 @@
 package com.belajar.colalin.homeView.profileMenu;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,6 +18,12 @@ public class FragmentInfo extends Fragment {
 
     public FragmentInfo() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
