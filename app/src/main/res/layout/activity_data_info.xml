@@ -76,6 +76,7 @@
     </LinearLayout>
 
     <FrameLayout
+        android:padding="20sp"
         android:id="@+id/pie_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>

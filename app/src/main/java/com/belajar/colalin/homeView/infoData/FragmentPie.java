@@ -2,17 +2,16 @@ package com.belajar.colalin.homeView.infoData;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.belajar.colalin.R;
+import com.belajar.colalin.databinding.FragmentPieBinding;
 import com.belajar.colalin.homeView.Models.Kendaraan;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -28,15 +27,17 @@ import java.util.ArrayList;
 public class FragmentPie extends Fragment {
     private PieChart pieChart;
     private Kendaraan kendaraan;
+    private FragmentPieBinding binding;
     public FragmentPie() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pie, container, false);
+        binding = FragmentPieBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
 
     @Override
@@ -44,7 +45,6 @@ public class FragmentPie extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         pieChart = view.findViewById(R.id.chart_kendaraan);
         kendaraan = getActivity().getIntent().getParcelableExtra("kendaraan");
-        Toast.makeText(getActivity(), ""+kendaraan.getGolongan1(), Toast.LENGTH_SHORT).show();
         setUpPieChart();
         loadPieChart();
 
