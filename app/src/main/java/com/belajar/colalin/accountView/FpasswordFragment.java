@@ -39,6 +39,9 @@ public class FpasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         binding.buttonNext.setOnClickListener(view1 -> goneOTP());
+        binding.buttonVertivikasi.setOnClickListener(view1 -> {
+            navController.navigate(R.id.action_fpasswordFragment_to_newPasswordFragment);
+        });
     }
 
     @Override
