@@ -1,8 +1,8 @@
-# colalin adalah sebuah aplikasi android, menggunakan bahasa pemrogramana Java
-# yang memiliki fungsi untuk menghitung kendaraan di jalan.
-# aplikasi ini dapat membantu teman" di jurusan teknik sipil, 
-#untuk membantu mengerjakan tugas Rekayasa Lalu lintas,
-atau pihak manapun yang ingin menggunakannya.
+= **colalin** adalah sebuah aplikasi android, menggunakan bahasa pemrogramana Java
+- yang memiliki fungsi untuk menghitung kendaraan di jalan.
+- aplikasi ini dapat membantu teman" di jurusan teknik sipil, 
+- untuk membantu mengerjakan tugas Rekayasa Lalu lintas,
+- atau pihak manapun yang ingin menggunakannya.
 
 
 #ER DIAGRAM
