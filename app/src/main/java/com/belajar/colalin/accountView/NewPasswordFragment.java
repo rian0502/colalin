@@ -5,16 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentNewPasswordBinding;
+
+import java.util.Objects;
 
 public class NewPasswordFragment extends Fragment {
     private FragmentNewPasswordBinding binding;
@@ -51,10 +51,10 @@ public class NewPasswordFragment extends Fragment {
     }
 
     private boolean etIsEmpty(){
-        if(binding.inputNewPassword.getText().toString().trim().isEmpty()){
+        if(Objects.requireNonNull(binding.inputNewPassword.getText()).toString().trim().isEmpty()){
             binding.inputNewPassword.setError("Harus di isi");
             return false;
-        }else if(binding.inputPasswordConf.getText().toString().trim().isEmpty()){
+        }else if(Objects.requireNonNull(binding.inputPasswordConf.getText()).toString().trim().isEmpty()){
             binding.inputPasswordConf.setError("Harus di isi");
             return false;
         }else{

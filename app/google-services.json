@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "316076633651",
+    "project_id": "colalin-52d80",
+    "storage_bucket": "colalin-52d80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:316076633651:android:61e8c0e956da5b1142fd46",
+        "android_client_info": {
+          "package_name": "com.belajar.colalin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "316076633651-jvrtvioisnster8s1t2on6k6jb3am3al.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR97qjvv2Q44wCWkUPQ5IzVo3SbMZimRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "316076633651-jvrtvioisnster8s1t2on6k6jb3am3al.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
