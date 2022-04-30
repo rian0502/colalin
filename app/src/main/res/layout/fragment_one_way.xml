@@ -1,289 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".homeView.Menus.FragmentOneWay">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_gol1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_gol2"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:columnCount="3">
 
-        <TextView
-            android:id="@+id/tv_gol3"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_gol1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="0" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_gol2"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_satu"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 1"
-            app:icon="@drawable/motorcycle"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                <TextView
+                    android:id="@+id/tv_gol3"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_dua"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 2"
-            app:icon="@drawable/car"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_satu"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:text="Gol - 1"
+                    app:icon="@drawable/motorcycle"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_tiga"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Gol - 3"
-            app:icon="@drawable/minibus"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
-    </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_dua"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                    android:text="Gol - 2"
+                    app:icon="@drawable/car"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol4"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_tiga"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gol - 3"
+                    app:icon="@drawable/minibus"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol5A"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                <TextView
+                    android:id="@+id/tv_gol4"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_gol5B"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0" />
-    </LinearLayout>
+                    android:gravity="center"
+                    android:text="0" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_gol5A"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_empat"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 4"
-            app:icon="@drawable/pickup"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_5a"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 5a"
-            app:icon="@drawable/big_bus"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                <TextView
+                    android:id="@+id/tv_gol5B"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_5b"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Gol - 5b"
-            app:icon="@drawable/bus_comm"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
-    </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_empat"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:text="Gol - 4"
+                    app:icon="@drawable/pickup"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_5a"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_gol6A"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                    android:text="Gol - 5a"
+                    app:icon="@drawable/big_bus"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol6B"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_5b"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gol - 5b"
+                    app:icon="@drawable/bus_comm"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol7A"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_gol6A"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_gol6B"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_6A"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 6a"
-            app:icon="@drawable/truck_ba"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_6B"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 6b"
-            app:icon="@drawable/truck6b"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                <TextView
+                    android:id="@+id/tv_gol7A"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_7A"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Gol - 7a"
-            app:icon="@drawable/truck_7a"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
-    </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_6A"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10sp"
+                    android:text="Gol - 6a"
+                    app:icon="@drawable/truck_ba"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20sp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_6B"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <TextView
-            android:id="@+id/tv_gol7B"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                    android:text="Gol - 6b"
+                    app:icon="@drawable/truck6b"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol7C"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:gravity="center"
-            android:text="0" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_7A"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gol - 7a"
+                    app:icon="@drawable/truck_7a"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
 
-        <TextView
-            android:id="@+id/tv_gol8"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="0" />
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_gol7B"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_7B"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 7B"
-            app:icon="@drawable/truck_7b"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                <TextView
+                    android:id="@+id/tv_gol7C"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_7C"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30sp"
-            android:text="Gol - 7C"
-            app:icon="@drawable/truck_7c"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
+                    android:gravity="center"
+                    android:text="0" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/golongan_8"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Gol - 8"
-            app:icon="@drawable/bicycle"
-            app:iconGravity="textTop"
-            app:iconSize="50sp" />
-    </LinearLayout>
-</LinearLayout>
+                <TextView
+                    android:id="@+id/tv_gol8"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="0" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_7B"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Gol - 7B"
+                    app:icon="@drawable/truck_7b"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_7C"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Gol - 7C"
+                    app:icon="@drawable/truck_7c"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/golongan_8"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Gol - 8"
+                    app:icon="@drawable/bicycle"
+                    app:iconGravity="textTop"
+                    app:iconSize="50sp" />
+            </GridLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
