@@ -2,9 +2,11 @@ package com.belajar.colalin.accountView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +17,18 @@ import androidx.navigation.Navigation;
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.Sessions.SessionManagement;
 import com.belajar.colalin.accountView.Sessions.UserLogged;
+import com.belajar.colalin.apiService.ApiClient;
+import com.belajar.colalin.apiService.LoginAuth;
 import com.belajar.colalin.databinding.FragmentLoginBinding;
 import com.belajar.colalin.homeView.HomeActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class LoginFragment extends Fragment {
@@ -49,16 +59,7 @@ public class LoginFragment extends Fragment {
 
         binding.buttonLogin.setOnClickListener(view1 -> {
             if (validateFrom()) {
-                login();
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                intent.putExtra("username", Objects.
-                        requireNonNull(binding.inputUsername.getText()).toString().trim());
-
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                        Intent.FLAG_ACTIVITY_NEW_TASK |
-                        Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                getActivity().finish();
+                loginAuth();
             }
         });
     }
@@ -79,17 +80,70 @@ public class LoginFragment extends Fragment {
         }
     }
 
+    private void loginAuth() {
+        Call< ArrayList< LoginAuth > >
+                authCall = ApiClient.getService().loginAuth(
+                                Objects.requireNonNull(binding.inputPassword.getText())
+                                        .toString()
+                                        .trim(),
+                                Objects.requireNonNull(binding.inputUsername.getText())
+                                        .toString()
+                                        .trim()
+        );
+
+        authCall.enqueue(new Callback< ArrayList< LoginAuth > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< LoginAuth > > call,
+                                   @NonNull Response< ArrayList< LoginAuth > > response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    if (response.body().get(0).getStatus().equals("berhasil")) {
+                        login();
+                    } else {
+                        Toast.makeText(getContext(),
+                                "Username atau Password salah", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< LoginAuth > > call,
+                                  @NonNull Throwable t) {
+                Log.e("eror 2", t.getMessage());
+                Log.e("eror stack : ", Arrays.toString(t.getStackTrace()));
+            }
+        });
+    }
+
     private void login() {
-        UserLogged user = new UserLogged(binding.inputUsername.getText().toString(), 1);
+        UserLogged user = new UserLogged(Objects
+                .requireNonNull(binding.inputUsername.getText()).toString(), 1
+        );
         SessionManagement sessionManagement = new SessionManagement(getActivity());
         sessionManagement.saveSession(user);
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.putExtra("username", Objects.
+                requireNonNull(binding.inputUsername.getText()).toString().trim());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP
+        );
+        startActivity(intent);
+        getActivity().finish();
     }
 
     private boolean validateFrom() {
-        if (binding.inputUsername.getText().toString().trim().isEmpty()) {
+        if (Objects.requireNonNull(binding.inputUsername.getText())
+                .toString()
+                .trim()
+                .isEmpty()) {
             binding.inputUsername.setError("Username harus di isi");
             return false;
-        } else if (binding.inputPassword.getText().toString().trim().isEmpty()) {
+        } else if (Objects.requireNonNull(binding.inputPassword.getText())
+                .toString()
+                .trim()
+                .isEmpty()) {
             binding.inputPassword.setError("Password harus di isi");
             return false;
         }
