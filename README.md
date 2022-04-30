@@ -10,8 +10,8 @@ __COLALIN__
 - [x] terdapat 12 golongan kendaraan
 - [X] Penyajian data yang menggunakan chart
 
-#ER DIAGRAM
-![image](https://user-images.githubusercontent.com/83405871/165481478-4414119f-0ff1-4f87-aab7-8d3fa8eb36fe.png)
+#Note
+ Aplikasi ini masih dalam tahap pengembangan, untuk saat ini hanya fokus dibagian interface user, fungsional aplikasi akan di kerjakan secara berkala.
 
 
  
