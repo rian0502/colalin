@@ -15,12 +15,15 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > {
-    private ArrayList< ModelData > modelData;
     private Context context;
-
-    public AdapterData(ArrayList< ModelData > modelData, Context context) {
-        this.modelData = modelData;
+    private ArrayList<ModelData> modelData = new ArrayList<>();
+    public AdapterData(Context context) {
         this.context = context;
+    }
+    public void updateData(ArrayList<ModelData> modelData){
+        this.modelData.clear();
+        this.modelData = modelData;
+        notifyDataSetChanged();
     }
 
     public ArrayList< ModelData > getModelData() {

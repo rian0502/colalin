@@ -27,7 +27,6 @@ public class HomeFragment extends Fragment {
         ListData.addData();
         menus = ListData.getData();
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

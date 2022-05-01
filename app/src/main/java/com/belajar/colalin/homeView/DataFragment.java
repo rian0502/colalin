@@ -9,25 +9,27 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.belajar.colalin.databinding.FragmentDataBinding;
 import com.belajar.colalin.homeView.CardAdapter.AdapterData;
 import com.belajar.colalin.homeView.Models.DataCounter;
 import com.belajar.colalin.homeView.Models.ModelData;
+import com.belajar.colalin.homeView.viewModel.ViewModelData;
 
 import java.util.ArrayList;
 
 
 public class DataFragment extends Fragment {
 
-    private final ArrayList< ModelData > modelData;
-    private FragmentDataBinding binding;
 
+    private FragmentDataBinding binding;
+    private ViewModelData viewModelData;
+    private  AdapterData adapter;
     public DataFragment() {
-        DataCounter.getKendaraan().clear();
-        DataCounter.addData();
-        modelData = DataCounter.getKendaraan();
+
     }
 
     @Override
@@ -35,15 +37,24 @@ public class DataFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentDataBinding.inflate(inflater, container, false);
+        viewModelData = new ViewModelProvider(this).get(ViewModelData.class);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AdapterData data = new AdapterData(modelData, getContext());
-        binding.containerDataFragment.setHasFixedSize(true);
-        binding.containerDataFragment.setAdapter(data);
+        adapter = new AdapterData(getContext());
+        binding.containerDataFragment.setAdapter(adapter);
+        binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+        viewModelData.setMovieData(this.getArguments().getString("id"));
+        viewModelData.getModelData().observe(getActivity(), dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
+    private Observer<ArrayList<ModelData>> dataObserver = new Observer< ArrayList< ModelData > >() {
+        @Override
+        public void onChanged(ArrayList< ModelData > modelData) {
+            adapter.updateData(modelData);
+        }
+    };
 }

@@ -73,6 +73,8 @@ public class LoginFragment extends Fragment {
         if (!isUserLogged.equals("null")) {
             Intent intent = new Intent(getActivity(), HomeActivity.class);
             intent.putExtra("username", isUserLogged);
+            intent.putExtra("id", String.valueOf(sessionManagement.getIdSession()));
+            Log.e("id", String.valueOf(sessionManagement.getIdSession()));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -83,12 +85,12 @@ public class LoginFragment extends Fragment {
     private void loginAuth() {
         Call< ArrayList< LoginAuth > >
                 authCall = ApiClient.getService().loginAuth(
-                                Objects.requireNonNull(binding.inputPassword.getText())
-                                        .toString()
-                                        .trim(),
-                                Objects.requireNonNull(binding.inputUsername.getText())
-                                        .toString()
-                                        .trim()
+                Objects.requireNonNull(binding.inputPassword.getText())
+                        .toString()
+                        .trim(),
+                Objects.requireNonNull(binding.inputUsername.getText())
+                        .toString()
+                        .trim()
         );
 
         authCall.enqueue(new Callback< ArrayList< LoginAuth > >() {
@@ -98,7 +100,7 @@ public class LoginFragment extends Fragment {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().get(0).getStatus().equals("berhasil")) {
-                        login();
+                        login(response.body().get(0).getId());
                     } else {
                         Toast.makeText(getContext(),
                                 "Username atau Password salah", Toast.LENGTH_SHORT)
@@ -116,15 +118,14 @@ public class LoginFragment extends Fragment {
         });
     }
 
-    private void login() {
-        UserLogged user = new UserLogged(Objects
-                .requireNonNull(binding.inputUsername.getText()).toString(), 1
-        );
+    private void login(String id) {
+        String username = binding.inputUsername.getText().toString().trim();
+        UserLogged user = new UserLogged(username, Integer.parseInt(id));
         SessionManagement sessionManagement = new SessionManagement(getActivity());
         sessionManagement.saveSession(user);
         Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.putExtra("username", Objects.
-                requireNonNull(binding.inputUsername.getText()).toString().trim());
+        intent.putExtra("username", username);
+        intent.putExtra("id", id);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_CLEAR_TOP

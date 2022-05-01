@@ -20,4 +20,5 @@ public class UserLogged {
     public int getId() {
         return id;
     }
+
 }

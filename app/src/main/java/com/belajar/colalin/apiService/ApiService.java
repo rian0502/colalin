@@ -2,6 +2,8 @@ package com.belajar.colalin.apiService;
 
 import android.util.Log;
 
+import com.belajar.colalin.homeView.Models.ModelData;
+
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -18,6 +20,6 @@ public interface ApiService {
     );
     @FormUrlEncoded
     @POST("show_data.php")
-    Call<DataCounter> showData(@Field("id_account") int id_account);
+    Call<ArrayList<ModelData>> showData(@Field("id_account") int id_account);
 
 }
