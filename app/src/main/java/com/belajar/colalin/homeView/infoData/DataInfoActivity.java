@@ -23,6 +23,23 @@ public class DataInfoActivity extends AppCompatActivity {
         binding.jenisJalan.setText(modelData.getJenisJalan());
         binding.lokasiPerhitungan.setText(modelData.getLokasi());
         binding.waktuPerhitungan.setText(modelData.getTanggal());
+
+        binding.golongan1.setText(modelData.getKendaraan().getGol1());
+        binding.golongan2.setText(modelData.getKendaraan().getGol2());
+        binding.golongan3.setText(modelData.getKendaraan().getGol3());
+
+        binding.golongan4.setText(modelData.getKendaraan().getGol4());
+        binding.golongan5a.setText(modelData.getKendaraan().getGol5a());
+        binding.golongan5b.setText(modelData.getKendaraan().getGol5b());
+
+        binding.golongan6a.setText(modelData.getKendaraan().getGol6a());
+        binding.golongan6b.setText(modelData.getKendaraan().getGol6b());
+        binding.golongan7a.setText(modelData.getKendaraan().getGol7a());
+
+        binding.golongan7b.setText(modelData.getKendaraan().getGol7b());
+        binding.golongan7c.setText(modelData.getKendaraan().getGol7c());
+        binding.golongan8.setText(modelData.getKendaraan().getGol8());
+
         getSupportFragmentManager().beginTransaction().replace(R.id.pie_container, new FragmentPie()).commit();
     }
 }
