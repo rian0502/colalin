@@ -1,7 +1,6 @@
 package com.belajar.colalin.homeView;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.belajar.colalin.databinding.FragmentDataBinding;
 import com.belajar.colalin.homeView.CardAdapter.AdapterData;
-import com.belajar.colalin.homeView.Models.DataCounter;
 import com.belajar.colalin.homeView.Models.ModelData;
 import com.belajar.colalin.homeView.viewModel.ViewModelData;
 
@@ -27,7 +25,8 @@ public class DataFragment extends Fragment {
 
     private FragmentDataBinding binding;
     private ViewModelData viewModelData;
-    private  AdapterData adapter;
+    private AdapterData adapter;
+
     public DataFragment() {
 
     }
@@ -51,7 +50,8 @@ public class DataFragment extends Fragment {
         viewModelData.getModelData().observe(getActivity(), dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
-    private Observer<ArrayList<ModelData>> dataObserver = new Observer< ArrayList< ModelData > >() {
+
+    private Observer< ArrayList< ModelData > > dataObserver = new Observer< ArrayList< ModelData > >() {
         @Override
         public void onChanged(ArrayList< ModelData > modelData) {
             adapter.updateData(modelData);

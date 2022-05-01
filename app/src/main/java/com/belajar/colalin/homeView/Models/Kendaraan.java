@@ -3,49 +3,82 @@ package com.belajar.colalin.homeView.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Kendaraan implements Parcelable {
 
-    private int golongan1;
-    private int golongan2;
-    private int golongan3;
-    private int golongan4;
-    private int golongan5A;
-    private int golongan5B;
-    private int golongan6A;
-    private int golongan6B;
-    private int golongan7A;
-    private int golongan7B;
-    private int golongan7C;
-    private int golongan8;
-
-    public Kendaraan(int golongan1, int golongan2, int golongan3, int golongan4, int golongan5A, int golongan5B, int golongan6A, int golongan6B, int golongan7A, int golongan7B, int golongan7C, int golongan8) {
-        this.golongan1 = golongan1;
-        this.golongan2 = golongan2;
-        this.golongan3 = golongan3;
-        this.golongan4 = golongan4;
-        this.golongan5A = golongan5A;
-        this.golongan5B = golongan5B;
-        this.golongan6A = golongan6A;
-        this.golongan6B = golongan6B;
-        this.golongan7A = golongan7A;
-        this.golongan7B = golongan7B;
-        this.golongan7C = golongan7C;
-        this.golongan8 = golongan8;
-    }
+    @SerializedName("gol_1")
+    @Expose
+    private String gol1;
+    @SerializedName("gol_2")
+    @Expose
+    private String gol2;
+    @SerializedName("gol_3")
+    @Expose
+    private String gol3;
+    @SerializedName("gol_4")
+    @Expose
+    private String gol4;
+    @SerializedName("gol_5a")
+    @Expose
+    private String gol5a;
+    @SerializedName("gol_5b")
+    @Expose
+    private String gol5b;
+    @SerializedName("gol_6a")
+    @Expose
+    private String gol6a;
+    @SerializedName("gol_6b")
+    @Expose
+    private String gol6b;
+    @SerializedName("gol_7a")
+    @Expose
+    private String gol7a;
+    @SerializedName("gol_7b")
+    @Expose
+    private String gol7b;
+    @SerializedName("gol_7c")
+    @Expose
+    private String gol7c;
+    @SerializedName("gol_8")
+    @Expose
+    private String gol8;
 
     protected Kendaraan(Parcel in) {
-        golongan1 = in.readInt();
-        golongan2 = in.readInt();
-        golongan3 = in.readInt();
-        golongan4 = in.readInt();
-        golongan5A = in.readInt();
-        golongan5B = in.readInt();
-        golongan6A = in.readInt();
-        golongan6B = in.readInt();
-        golongan7A = in.readInt();
-        golongan7B = in.readInt();
-        golongan7C = in.readInt();
-        golongan8 = in.readInt();
+        gol1 = in.readString();
+        gol2 = in.readString();
+        gol3 = in.readString();
+        gol4 = in.readString();
+        gol5a = in.readString();
+        gol5b = in.readString();
+        gol6a = in.readString();
+        gol6b = in.readString();
+        gol7a = in.readString();
+        gol7b = in.readString();
+        gol7c = in.readString();
+        gol8 = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(gol1);
+        dest.writeString(gol2);
+        dest.writeString(gol3);
+        dest.writeString(gol4);
+        dest.writeString(gol5a);
+        dest.writeString(gol5b);
+        dest.writeString(gol6a);
+        dest.writeString(gol6b);
+        dest.writeString(gol7a);
+        dest.writeString(gol7b);
+        dest.writeString(gol7c);
+        dest.writeString(gol8);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator< Kendaraan > CREATOR = new Creator< Kendaraan >() {
@@ -60,120 +93,100 @@ public class Kendaraan implements Parcelable {
         }
     };
 
-    public int getGolongan1() {
-        return golongan1;
+    public String getGol1() {
+        return gol1;
     }
 
-    public void setGolongan1(int golongan1) {
-        this.golongan1 = golongan1;
+    public void setGol1(String gol1) {
+        this.gol1 = gol1;
     }
 
-    public int getGolongan2() {
-        return golongan2;
+    public String getGol2() {
+        return gol2;
     }
 
-    public void setGolongan2(int golongan2) {
-        this.golongan2 = golongan2;
+    public void setGol2(String gol2) {
+        this.gol2 = gol2;
     }
 
-    public int getGolongan3() {
-        return golongan3;
+    public String getGol3() {
+        return gol3;
     }
 
-    public void setGolongan3(int golongan3) {
-        this.golongan3 = golongan3;
+    public void setGol3(String gol3) {
+        this.gol3 = gol3;
     }
 
-    public int getGolongan4() {
-        return golongan4;
+    public String getGol4() {
+        return gol4;
     }
 
-    public void setGolongan4(int golongan4) {
-        this.golongan4 = golongan4;
+    public void setGol4(String gol4) {
+        this.gol4 = gol4;
     }
 
-    public int getGolongan5A() {
-        return golongan5A;
+    public String getGol5a() {
+        return gol5a;
     }
 
-    public void setGolongan5A(int golongan5A) {
-        this.golongan5A = golongan5A;
+    public void setGol5a(String gol5a) {
+        this.gol5a = gol5a;
     }
 
-    public int getGolongan5B() {
-        return golongan5B;
+    public String getGol5b() {
+        return gol5b;
     }
 
-    public void setGolongan5B(int golongan5B) {
-        this.golongan5B = golongan5B;
+    public void setGol5b(String gol5b) {
+        this.gol5b = gol5b;
     }
 
-    public int getGolongan6A() {
-        return golongan6A;
+    public String getGol6a() {
+        return gol6a;
     }
 
-    public void setGolongan6A(int golongan6A) {
-        this.golongan6A = golongan6A;
+    public void setGol6a(String gol6a) {
+        this.gol6a = gol6a;
     }
 
-    public int getGolongan6B() {
-        return golongan6B;
+    public String getGol6b() {
+        return gol6b;
     }
 
-    public void setGolongan6B(int golongan6B) {
-        this.golongan6B = golongan6B;
+    public void setGol6b(String gol6b) {
+        this.gol6b = gol6b;
     }
 
-    public int getGolongan7A() {
-        return golongan7A;
+    public String getGol7a() {
+        return gol7a;
     }
 
-    public void setGolongan7A(int golongan7A) {
-        this.golongan7A = golongan7A;
+    public void setGol7a(String gol7a) {
+        this.gol7a = gol7a;
     }
 
-    public int getGolongan7B() {
-        return golongan7B;
+    public String getGol7b() {
+        return gol7b;
     }
 
-    public void setGolongan7B(int golongan7B) {
-        this.golongan7B = golongan7B;
+    public void setGol7b(String gol7b) {
+        this.gol7b = gol7b;
     }
 
-    public int getGolongan7C() {
-        return golongan7C;
+    public String getGol7c() {
+        return gol7c;
     }
 
-    public void setGolongan7C(int golongan7C) {
-        this.golongan7C = golongan7C;
+    public void setGol7c(String gol7c) {
+        this.gol7c = gol7c;
     }
 
-    public int getGolongan8() {
-        return golongan8;
+    public String getGol8() {
+        return gol8;
     }
 
-    public void setGolongan8(int golongan8) {
-        this.golongan8 = golongan8;
+    public void setGol8(String gol8) {
+        this.gol8 = gol8;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(golongan1);
-        parcel.writeInt(golongan2);
-        parcel.writeInt(golongan3);
-        parcel.writeInt(golongan4);
-        parcel.writeInt(golongan5A);
-        parcel.writeInt(golongan5B);
-        parcel.writeInt(golongan6A);
-        parcel.writeInt(golongan6B);
-        parcel.writeInt(golongan7A);
-        parcel.writeInt(golongan7B);
-        parcel.writeInt(golongan7C);
-        parcel.writeInt(golongan8);
-    }
 }

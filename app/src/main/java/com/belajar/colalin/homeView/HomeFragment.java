@@ -30,7 +30,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
@@ -39,7 +38,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentHomeBinding binding =
                 FragmentHomeBinding.inflate(inflater, container, false);
-
         Adapter adapter = new Adapter(menus, getContext());
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);

@@ -3,30 +3,53 @@ package com.belajar.colalin.homeView.Models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ModelData implements Parcelable {
-    private String id;
-    private String location;
-    private String data;
-    private String jenis_jalan;
+
+    @SerializedName("lokasi")
+    @Expose
+    private String lokasi;
+    @SerializedName("jenis_jalan")
+    @Expose
+    private String jenisJalan;
+    @SerializedName("tanggal")
+    @Expose
+    private String tanggal;
+    @SerializedName("Kendaraan")
+    @Expose
     private Kendaraan kendaraan;
     private int imageResource;
 
+    protected ModelData(Parcel in) {
+        lokasi = in.readString();
+        jenisJalan = in.readString();
+        tanggal = in.readString();
+        kendaraan = in.readParcelable(Kendaraan.class.getClassLoader());
+        imageResource = in.readInt();
+    }
 
-    public ModelData(String id, String location, String data, String jenis_jalan, Kendaraan kendaraan, int imageResource) {
-        this.id = id;
-        this.location = location;
-        this.data = data;
-        this.jenis_jalan = jenis_jalan;
-        this.kendaraan = kendaraan;
+    public int getImageResource() {
+        return imageResource;
+    }
+
+    public void setImageResource(int imageResource) {
         this.imageResource = imageResource;
     }
 
-    protected ModelData(Parcel in) {
-        id = in.readString();
-        location = in.readString();
-        data = in.readString();
-        jenis_jalan = in.readString();
-        imageResource = in.readInt();
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(lokasi);
+        dest.writeString(jenisJalan);
+        dest.writeString(tanggal);
+        dest.writeParcelable(kendaraan, flags);
+        dest.writeInt(imageResource);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator< ModelData > CREATOR = new Creator< ModelData >() {
@@ -41,44 +64,28 @@ public class ModelData implements Parcelable {
         }
     };
 
-    public int getImageResource() {
-        return imageResource;
+    public String getLokasi() {
+        return lokasi;
     }
 
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
+    public void setLokasi(String lokasi) {
+        this.lokasi = lokasi;
     }
 
-    public String getId() {
-        return id;
+    public String getJenisJalan() {
+        return jenisJalan;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setJenisJalan(String jenisJalan) {
+        this.jenisJalan = jenisJalan;
     }
 
-    public String getLocation() {
-        return location;
+    public String getTanggal() {
+        return tanggal;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getJenis_jalan() {
-        return jenis_jalan;
-    }
-
-    public void setJenis_jalan(String jenis_jalan) {
-        this.jenis_jalan = jenis_jalan;
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 
     public Kendaraan getKendaraan() {
@@ -87,19 +94,5 @@ public class ModelData implements Parcelable {
 
     public void setKendaraan(Kendaraan kendaraan) {
         this.kendaraan = kendaraan;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(this.id);
-        parcel.writeString(this.location);
-        parcel.writeString(this.data);
-        parcel.writeString(this.jenis_jalan);
-        parcel.writeInt(this.imageResource);
     }
 }

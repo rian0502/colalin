@@ -3,6 +3,8 @@ package com.belajar.colalin.homeView.viewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.belajar.colalin.R;
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.homeView.Models.ModelData;
 import java.util.ArrayList;
@@ -23,7 +25,17 @@ public class ViewModelData extends ViewModel {
             public void onResponse(Call< ArrayList< ModelData > > call,
                                    Response< ArrayList< ModelData > > response) {
                 if (response.isSuccessful() && response.body().size() != 0){
-                    data.postValue(response.body());
+                    ArrayList<ModelData> md = response.body();
+                    for (ModelData modelData: md){
+                        if (modelData.getJenisJalan().equals("One Way")){
+                            modelData.setImageResource(R.drawable.one_way);
+                        }else if (modelData.getJenisJalan().equals("Two Way")){
+                            modelData.setImageResource(R.drawable.motorway);
+                        }else{
+                            modelData.setImageResource(R.drawable.road);
+                        }
+                    }
+                    data.postValue(md);
                 }
             }
 

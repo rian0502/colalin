@@ -54,9 +54,9 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
     @Override
     public void onBindViewHolder(@NonNull HolderData holder, int position) {
         ModelData md = modelData.get(position);
-        holder.itemCounterBinding.tvDate.setText(md.getData());
-        holder.itemCounterBinding.tvLocation.setText(md.getLocation());
-        holder.itemCounterBinding.tvJenisJalan.setText(md.getJenis_jalan());
+        holder.itemCounterBinding.tvDate.setText(md.getTanggal());
+        holder.itemCounterBinding.tvLocation.setText(md.getLokasi());
+        holder.itemCounterBinding.tvJenisJalan.setText(md.getJenisJalan());
         Glide.with(context)
                 .load(md.getImageResource())
                 .into(holder.itemCounterBinding.gambarJalan);

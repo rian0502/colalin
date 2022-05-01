@@ -20,9 +20,9 @@ public class DataInfoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         ModelData modelData = getIntent().getParcelableExtra("data");
         binding.imageJalan.setImageResource(modelData.getImageResource());
-        binding.jenisJalan.setText(modelData.getJenis_jalan());
-        binding.lokasiPerhitungan.setText(modelData.getLocation());
-        binding.waktuPerhitungan.setText(modelData.getData());
+        binding.jenisJalan.setText(modelData.getJenisJalan());
+        binding.lokasiPerhitungan.setText(modelData.getLokasi());
+        binding.waktuPerhitungan.setText(modelData.getTanggal());
         getSupportFragmentManager().beginTransaction().replace(R.id.pie_container, new FragmentPie()).commit();
     }
 }
