@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentOneWayBinding;
@@ -41,6 +42,17 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bindingButtonClick();
+        binding.menubar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()){
+                case R.id.nav_save:
+                    Toast.makeText(getContext(), "Save", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.nav_clear:
+                    Toast.makeText(getContext(), "Reset", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return false;
+        });
     }
 
     public void bindingButtonClick() {

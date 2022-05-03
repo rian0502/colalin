@@ -85,6 +85,38 @@ public class LoginFragment extends Fragment {
         }
     }
 
+    private void login(String id) {
+        String username = binding.inputUsername.getText().toString().trim();
+        UserLogged user = new UserLogged(username, Integer.parseInt(id));
+        SessionManagement sessionManagement = new SessionManagement(getActivity());
+        sessionManagement.saveSession(user);
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.putExtra("username", username);
+        intent.putExtra("id", id);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK |
+                Intent.FLAG_ACTIVITY_CLEAR_TOP
+        );
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    private boolean validateFrom() {
+        if (Objects.requireNonNull(binding.inputUsername.getText())
+                .toString()
+                .trim()
+                .isEmpty()) {
+            binding.inputUsername.setError("Username harus di isi");
+            return false;
+        } else if (Objects.requireNonNull(binding.inputPassword.getText())
+                .toString()
+                .trim()
+                .isEmpty()) {
+            binding.inputPassword.setError("Password harus di isi");
+            return false;
+        }
+        return true;
+    }
     private void loginAuth() {
         Call< ArrayList< LoginAuth > >
                 authCall = ApiClient.getService().loginAuth(
@@ -127,38 +159,5 @@ public class LoginFragment extends Fragment {
                 binding.buttonLogin.setText(R.string.login);
             }
         });
-    }
-
-    private void login(String id) {
-        String username = binding.inputUsername.getText().toString().trim();
-        UserLogged user = new UserLogged(username, Integer.parseInt(id));
-        SessionManagement sessionManagement = new SessionManagement(getActivity());
-        sessionManagement.saveSession(user);
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
-        intent.putExtra("username", username);
-        intent.putExtra("id", id);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
-                Intent.FLAG_ACTIVITY_NEW_TASK |
-                Intent.FLAG_ACTIVITY_CLEAR_TOP
-        );
-        startActivity(intent);
-        getActivity().finish();
-    }
-
-    private boolean validateFrom() {
-        if (Objects.requireNonNull(binding.inputUsername.getText())
-                .toString()
-                .trim()
-                .isEmpty()) {
-            binding.inputUsername.setError("Username harus di isi");
-            return false;
-        } else if (Objects.requireNonNull(binding.inputPassword.getText())
-                .toString()
-                .trim()
-                .isEmpty()) {
-            binding.inputPassword.setError("Password harus di isi");
-            return false;
-        }
-        return true;
     }
 }

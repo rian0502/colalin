@@ -3,14 +3,14 @@ package com.belajar.colalin.homeView.Menus;
 import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentJalanTolBinding;
@@ -37,9 +37,22 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
         return binding.getRoot();
     }
 
+
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.menubar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.nav_clear:
+                    Toast.makeText(getContext(), "cLEAR", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.nav_save:
+                    Toast.makeText(getContext(), "Save", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
+            return false;
+        });
         bindingButtonClick();
     }
 
