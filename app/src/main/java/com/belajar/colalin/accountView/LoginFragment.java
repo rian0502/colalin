@@ -59,6 +59,9 @@ public class LoginFragment extends Fragment {
 
         binding.buttonLogin.setOnClickListener(view1 -> {
             if (validateFrom()) {
+                binding.buttonLogin.setClickable(false);
+                binding.progressLogin.setVisibility(View.VISIBLE);
+                binding.buttonLogin.setText("");
                 loginAuth();
             }
         });
@@ -92,7 +95,6 @@ public class LoginFragment extends Fragment {
                         .toString()
                         .trim()
         );
-
         authCall.enqueue(new Callback< ArrayList< LoginAuth > >() {
             @Override
             public void onResponse(@NonNull Call< ArrayList< LoginAuth > > call,
@@ -100,11 +102,17 @@ public class LoginFragment extends Fragment {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
                     if (response.body().get(0).getStatus().equals("berhasil")) {
+                        binding.buttonLogin.setClickable(true);
+                        binding.progressLogin.setVisibility(View.GONE);
+                        binding.buttonLogin.setText(R.string.login);
                         login(response.body().get(0).getId());
                     } else {
                         Toast.makeText(getContext(),
                                 "Username atau Password salah", Toast.LENGTH_SHORT)
                                 .show();
+                        binding.buttonLogin.setClickable(true);
+                        binding.progressLogin.setVisibility(View.GONE);
+                        binding.buttonLogin.setText(R.string.login);
                     }
                 }
             }
@@ -114,6 +122,9 @@ public class LoginFragment extends Fragment {
                                   @NonNull Throwable t) {
                 Log.e("eror 2", t.getMessage());
                 Log.e("eror stack : ", Arrays.toString(t.getStackTrace()));
+                binding.buttonLogin.setClickable(true);
+                binding.progressLogin.setVisibility(View.GONE);
+                binding.buttonLogin.setText(R.string.login);
             }
         });
     }
