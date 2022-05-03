@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -27,6 +25,7 @@ public class FragmentPie extends Fragment {
     private PieChart pieChart;
     private Kendaraan kendaraan;
     private FragmentPieBinding binding;
+
     public FragmentPie() {
         // Required empty public constructor
     }
@@ -77,14 +76,14 @@ public class FragmentPie extends Fragment {
         entries.add(new PieEntry(Float.parseFloat(kendaraan.getGol7b()), "Gol-7B"));
         entries.add(new PieEntry(Float.parseFloat(kendaraan.getGol7c()), "Gol-7C"));
         entries.add(new PieEntry(Float.parseFloat(kendaraan.getGol8()), "Gol-8"));
-        ArrayList<Integer> colors = new ArrayList<>();
-        for (int color: ColorTemplate.MATERIAL_COLORS){
+        ArrayList< Integer > colors = new ArrayList<>();
+        for (int color : ColorTemplate.MATERIAL_COLORS) {
             colors.add(color);
         }
-        for (int color: ColorTemplate.VORDIPLOM_COLORS){
+        for (int color : ColorTemplate.VORDIPLOM_COLORS) {
             colors.add(color);
         }
-        PieDataSet dataSet = new PieDataSet(entries,"");
+        PieDataSet dataSet = new PieDataSet(entries, "");
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setDrawValues(true);
