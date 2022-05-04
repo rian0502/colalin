@@ -22,6 +22,8 @@ public class DataInfoActivity extends AppCompatActivity {
         binding.jenisJalan.setText(modelData.getJenisJalan());
         binding.lokasiPerhitungan.setText(modelData.getLokasi());
         binding.waktuPerhitungan.setText(modelData.getTanggal());
+        binding.jamMulai.setText(modelData.getStart());
+        binding.jamSelesai.setText(modelData.getEnd());
         binding.golongan1.setText(modelData.getKendaraan().getGol1());
         binding.golongan2.setText(modelData.getKendaraan().getGol2());
         binding.golongan3.setText(modelData.getKendaraan().getGol3());

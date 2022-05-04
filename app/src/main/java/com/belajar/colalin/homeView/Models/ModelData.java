@@ -17,6 +17,12 @@ public class ModelData implements Parcelable {
     @SerializedName("tanggal")
     @Expose
     private String tanggal;
+    @SerializedName("start")
+    @Expose
+    private String start;
+    @SerializedName("end")
+    @Expose
+    private String end;
     @SerializedName("Kendaraan")
     @Expose
     private Kendaraan kendaraan;
@@ -26,16 +32,10 @@ public class ModelData implements Parcelable {
         lokasi = in.readString();
         jenisJalan = in.readString();
         tanggal = in.readString();
+        start = in.readString();
+        end = in.readString();
         kendaraan = in.readParcelable(Kendaraan.class.getClassLoader());
         imageResource = in.readInt();
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }
-
-    public void setImageResource(int imageResource) {
-        this.imageResource = imageResource;
     }
 
     @Override
@@ -43,6 +43,8 @@ public class ModelData implements Parcelable {
         dest.writeString(lokasi);
         dest.writeString(jenisJalan);
         dest.writeString(tanggal);
+        dest.writeString(start);
+        dest.writeString(end);
         dest.writeParcelable(kendaraan, flags);
         dest.writeInt(imageResource);
     }
@@ -84,8 +86,32 @@ public class ModelData implements Parcelable {
         return tanggal;
     }
 
+    public int getImageResource() {
+        return imageResource;
+    }
+
+    public void setImageResource(int imageResource) {
+        this.imageResource = imageResource;
+    }
+
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public Kendaraan getKendaraan() {
