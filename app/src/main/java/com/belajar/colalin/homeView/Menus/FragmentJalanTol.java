@@ -1,24 +1,23 @@
 package com.belajar.colalin.homeView.Menus;
 
 import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.lifecycle.ViewModelProvider;
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentJalanTolBinding;
+import com.belajar.colalin.homeView.viewModel.ViewModelTollRoad;
 
 
 public class FragmentJalanTol extends Fragment implements View.OnClickListener {
-    private int gol2, gol3, gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c;
     private FragmentJalanTolBinding binding;
+    private ViewModelTollRoad viewmodel;
 
     public FragmentJalanTol() {
     }
@@ -26,7 +25,6 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
@@ -34,6 +32,9 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentJalanTolBinding.inflate(inflater, container, false);
+        viewmodel = new ViewModelProvider(requireActivity()).get(ViewModelTollRoad.class);
+        bindingTvViewModel();
+        bindingButtonClick();
         return binding.getRoot();
     }
 
@@ -53,7 +54,7 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
             }
             return false;
         });
-        bindingButtonClick();
+
     }
 
     public void bindingButtonClick() {
@@ -69,49 +70,62 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
         binding.golonganTujuhC.setOnClickListener(this);
     }
 
+    public void bindingTvViewModel() {
+        binding.tvGol2.setText(String.valueOf(viewmodel.getGol2()));
+        binding.tvGol3.setText(String.valueOf(viewmodel.getGol3()));
+        binding.tvGol4.setText(String.valueOf(viewmodel.getGol4()));
+        binding.tvGol5A.setText(String.valueOf(viewmodel.getGol5a()));
+        binding.tvGol5B.setText(String.valueOf(viewmodel.getGol5b()));
+        binding.tvGol6A.setText(String.valueOf(viewmodel.getGol6a()));
+        binding.tvGol6B.setText(String.valueOf(viewmodel.getGol6b()));
+        binding.tvGol7A.setText(String.valueOf(viewmodel.getGol7a()));
+        binding.tvGol7B.setText(String.valueOf(viewmodel.getGol7b()));
+        binding.tvGol7C.setText(String.valueOf(viewmodel.getGol7c()));
+    }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.golongan_dua:
-                gol2++;
-                binding.tvGol2.setText(String.valueOf(gol2));
+                viewmodel.addGol2();
+                binding.tvGol2.setText(String.valueOf(viewmodel.getGol2()));
                 break;
             case R.id.golongan_tiga:
-                gol3++;
-                binding.tvGol3.setText(String.valueOf(gol3));
+                viewmodel.addGol3();
+                binding.tvGol3.setText(String.valueOf(viewmodel.getGol3()));
                 break;
             case R.id.golongan_empat:
-                gol4++;
-                binding.tvGol4.setText(String.valueOf(gol4));
+                viewmodel.addGol4();
+                binding.tvGol4.setText(String.valueOf(viewmodel.getGol4()));
                 break;
             case R.id.golongan_limaA:
-                gol5a++;
-                binding.tvGol5A.setText(String.valueOf(gol5a));
+                viewmodel.addGol5a();
+                binding.tvGol5A.setText(String.valueOf(viewmodel.getGol5a()));
                 break;
             case R.id.golongan_limaB:
-                gol5b++;
-                binding.tvGol5B.setText(String.valueOf(gol5b));
+                viewmodel.addGol5b();
+                binding.tvGol5B.setText(String.valueOf(viewmodel.getGol5b()));
                 break;
             case R.id.golongan_enamA:
-                gol6a++;
-                binding.tvGol6A.setText(String.valueOf(gol6a));
+                viewmodel.addGol6a();
+                binding.tvGol6A.setText(String.valueOf(viewmodel.getGol6a()));
                 break;
             case R.id.golongan_enamB:
-                gol6b++;
-                binding.tvGol6B.setText(String.valueOf(gol6b));
+                viewmodel.addGol6b();
+                binding.tvGol6B.setText(String.valueOf(viewmodel.getGol6b()));
                 break;
             case R.id.golongan_tujuhA:
-                gol7a++;
-                binding.tvGol7A.setText(String.valueOf(gol7a));
+                viewmodel.addGol7a();
+                binding.tvGol7A.setText(String.valueOf(viewmodel.getGol7a()));
                 break;
             case R.id.golongan_tujuhB:
-                gol7b++;
-                binding.tvGol7B.setText(String.valueOf(gol7b));
+                viewmodel.addGol7b();
+                binding.tvGol7B.setText(String.valueOf(viewmodel.getGol7b()));
                 break;
             case R.id.golongan_tujuhC:
-                gol7c++;
-                binding.tvGol7C.setText(String.valueOf(gol7c));
+                viewmodel.addGol7c();
+                binding.tvGol7C.setText(String.valueOf(viewmodel.getGol7c()));
                 break;
         }
     }

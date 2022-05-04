@@ -1,11 +1,7 @@
 package com.belajar.colalin.apiService;
 
-import android.util.Log;
-
 import com.belajar.colalin.homeView.Models.ModelData;
-
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -30,5 +26,7 @@ public interface ApiService {
                                              @Field("username") String username,
                                              @Field("phone") String phone
     );
-
+    @FormUrlEncoded
+    @POST("insert.php")
+    Call<ArrayList<RegisterAccount>> sendData(@Field("lokasi")String lokasi);
 }

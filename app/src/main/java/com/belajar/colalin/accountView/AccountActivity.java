@@ -1,16 +1,15 @@
 package com.belajar.colalin.accountView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import com.belajar.colalin.databinding.ActivityAccountBinding;
 
 
 public class AccountActivity extends AppCompatActivity {
-    private ActivityAccountBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAccountBinding.inflate(getLayoutInflater());
+        com.belajar.colalin.databinding.ActivityAccountBinding binding = ActivityAccountBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
