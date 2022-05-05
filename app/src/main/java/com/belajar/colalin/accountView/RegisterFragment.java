@@ -5,29 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.belajar.colalin.R;
-import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.RegisterAccount;
+import com.belajar.colalin.accountView.viewModelAcc.ViewModelRegister;
 import com.belajar.colalin.databinding.FragmentRegisterBinding;
-
-import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterFragment extends Fragment {
     private FragmentRegisterBinding binding;
     private NavController navController;
+    private ViewModelRegister modelRegister;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -38,6 +30,9 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
+
+        modelRegister = new ViewModelProvider(this).get(ViewModelRegister.class);
+        modelRegister.setContext(getActivity());
         return binding.getRoot();
     }
 
@@ -50,41 +45,15 @@ public class RegisterFragment extends Fragment {
                    if ( cekField(binding.inputUsernameRegister,
                            binding.inputPasswordRegister,
                            binding.inputPhoneRegister)){
-                       registerAccountService();
+                       modelRegister.setPassword(binding.inputPasswordRegister.getText().toString().trim());
+                       modelRegister.setPhone(binding.inputPhoneRegister.getText().toString().trim());
+                       modelRegister.setUsername(binding.inputUsernameRegister.getText().toString().trim());
+                       binding.buttonRegister.setClickable(false);
+                       binding.buttonRegister.setText("");
+                       binding.progressRegister.setVisibility(View.VISIBLE);
+                       modelRegister.checkUsername(binding.buttonRegister, binding.progressRegister);
                    }
                 });
-    }
-
-    private void registerAccountService() {
-        Call< ArrayList< RegisterAccount > > registCall = ApiClient.getService().registerUser(
-                binding.inputPasswordRegister.getText().toString().trim(),
-                binding.inputUsernameRegister.getText().toString().trim(),
-                binding.inputPhoneRegister.getText().toString().trim()
-        );
-        registCall.enqueue(new Callback< ArrayList< RegisterAccount > >() {
-            @Override
-            public void onResponse(Call< ArrayList< RegisterAccount > > call,
-                                   Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful()){
-                    if (response.body().get(0).getStatus().equals("sukses")){
-                        binding.inputPasswordRegister.getText().clear();
-                        binding.inputUsernameRegister.getText().clear();
-                        binding.inputPhoneRegister.getText().clear();
-                        Toast.makeText(getContext(), "Berhasil Mendaftar",
-                                Toast.LENGTH_SHORT).show();
-                        navController.navigate(R.id.action_registerFragment_to_loginFragment);
-                    }else{
-                        Toast.makeText(getContext(), "Akun gagal dibuat",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call< ArrayList< RegisterAccount > > call, Throwable t) {
-                Toast.makeText(getContext(), "Jaringan Eror", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private boolean cekField(EditText username, EditText password, EditText phone) {

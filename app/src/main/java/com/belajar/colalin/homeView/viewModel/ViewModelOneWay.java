@@ -1,12 +1,59 @@
 package com.belajar.colalin.homeView.viewModel;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
+import com.belajar.colalin.apiService.ApiClient;
+import com.belajar.colalin.apiService.RegisterAccount;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewModelOneWay extends ViewModel {
-    public int gol_1,gol_2,gol_3, gol_4,gol_5a,gol_5b,gol_6a,gol_6b,gol_7a,gol_7b,gol_7c,gol_8;
+    private int gol_1, gol_2, gol_3, gol_4, gol_5a, gol_5b,
+            gol_6a, gol_6b, gol_7a, gol_7b, gol_7c, gol_8;
+
+    private String start;
+    private String end;
+    private String date;
+
+    public ViewModelOneWay() {
+        this.start = DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now());
+        this.date = DateTimeFormatter.ofPattern("dd-MM-yyyy").format(LocalDate.now());
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public void addGol_1() {
-        this.gol_1 = this.gol_1+1;
+        this.gol_1 = this.gol_1 + 1;
     }
 
     public int getGol_1() {
@@ -101,4 +148,64 @@ public class ViewModelOneWay extends ViewModel {
         this.gol_8++;
     }
 
+    public void resetValue(){
+        gol_1 = 0;
+        gol_2 = 0;
+        gol_3 = 0;
+        gol_4 = 0;
+        gol_5a = 0;
+        gol_5b = 0;
+        gol_6a = 0;
+        gol_6b = 0;
+        gol_7a = 0;
+        gol_7b = 0;
+        gol_7c = 0;
+        gol_8 = 0;
+
+    }
+
+    public void postValue(String lokasi, int id, Context context){
+        Call< ArrayList< RegisterAccount > > postData = ApiClient.getService().sendData(
+                lokasi,
+                "One Way",
+                getDate(),
+                getStart(),
+                getEnd(),
+                getGol_1(),
+                getGol_2(),
+                getGol_3(),
+                getGol_4(),
+                getGol_5a(),
+                getGol_5b(),
+                getGol_6a(),
+                getGol_6b(),
+                getGol_7a(),
+                getGol_7b(),
+                getGol_7c(),
+                getGol_8(),
+                id
+        );
+        postData.enqueue(new Callback< ArrayList< RegisterAccount > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
+                                   @NonNull Response< ArrayList< RegisterAccount > > response) {
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    if (response.body().size() != 0) {
+                        if (response.body().get(0).getStatus().equals("sukses")) {
+                            resetValue();
+                            Toast.makeText(context, "Data Tersimpan", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Data Gagal Tersimpan", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call, @NonNull Throwable t) {
+                Toast.makeText(context, "Jaringan Eror", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

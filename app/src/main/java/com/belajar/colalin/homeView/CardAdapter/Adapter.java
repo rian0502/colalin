@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class Adapter extends RecyclerView.Adapter< Adapter.ListMenuHolder > {
     private final ArrayList< ListMenu > data;
     private final Context context;
-
-
-    public Adapter(ArrayList< ListMenu > data, Context context) {
+    private final String id;
+    public Adapter(ArrayList< ListMenu > data, Context context, String id) {
         this.data = data;
         this.context = context;
+        this.id = id;
     }
 
     @NonNull
@@ -43,6 +43,7 @@ public class Adapter extends RecyclerView.Adapter< Adapter.ListMenuHolder > {
                 new OnItemClick(position, (view, position1) -> {
                     Intent intent = new Intent(context, MenuActivity.class);
                     intent.putExtra("pilihan", position);
+                    intent.putExtra("id",id);
                     context.startActivity(intent);
                 }
                 ));

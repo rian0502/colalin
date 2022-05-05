@@ -77,7 +77,6 @@ public class LoginFragment extends Fragment {
             Intent intent = new Intent(getActivity(), HomeActivity.class);
             intent.putExtra("username", isUserLogged);
             intent.putExtra("id", String.valueOf(sessionManagement.getIdSession()));
-            Log.e("id", String.valueOf(sessionManagement.getIdSession()));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_CLEAR_TOP);

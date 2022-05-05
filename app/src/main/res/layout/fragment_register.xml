@@ -170,18 +170,37 @@
             </LinearLayout>
         </LinearLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_register"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40sp"
-            android:layout_marginTop="30sp"
-            android:layout_marginEnd="40sp"
-            android:backgroundTint="#066163"
-            android:text="@string/register"
-            android:textAllCaps="false"
-            android:textStyle="bold"
-            app:cornerRadius="10dp" />
+            android:layout_marginTop="20dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30sp"
+                android:layout_marginEnd="30sp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#066163"
+                    android:text="@string/register"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    app:cornerRadius="10dp" />
+            </FrameLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_register"
+                android:layout_width="wrap_content"
+                android:layout_height="20sp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone" />
+        </RelativeLayout>
     </LinearLayout>
 
 

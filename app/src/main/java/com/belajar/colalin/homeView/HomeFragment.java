@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +39,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentHomeBinding binding =
                 FragmentHomeBinding.inflate(inflater, container, false);
-        Adapter adapter = new Adapter(menus, getContext());
+
+        Adapter adapter = new Adapter(menus, getContext(), this.getArguments().getString("id"));
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
         binding.containerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -13,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentJalanTolBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelTollRoad;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class FragmentJalanTol extends Fragment implements View.OnClickListener {
@@ -46,10 +47,15 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_clear:
-                    Toast.makeText(getContext(), "cLEAR", Toast.LENGTH_SHORT).show();
+                    viewmodel.resetValue();
+                    bindingTvViewModel();
                     return true;
                 case R.id.nav_save:
-                    Toast.makeText(getContext(), "Save", Toast.LENGTH_SHORT).show();
+                    viewmodel.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
+                    assert this.getArguments() != null;
+                    viewmodel.postValue("Merak", Integer.parseInt(this.getArguments()
+                            .getString("id")), getContext());
+                    bindingTvViewModel();
                     return true;
             }
             return false;

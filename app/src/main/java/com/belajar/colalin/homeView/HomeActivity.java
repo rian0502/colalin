@@ -3,6 +3,7 @@ package com.belajar.colalin.homeView;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,11 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = binding.bottomNavigation;
         bottomNavigationView.setOnItemSelectedListener(navListener);
         if (savedInstanceState == null) {
+            Fragment fragment = new HomeFragment();
+            fragment.setArguments(bundle);
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_home_container, new HomeFragment())
+                    .replace(R.id.fragment_home_container, fragment)
                     .commit();
         }
     }

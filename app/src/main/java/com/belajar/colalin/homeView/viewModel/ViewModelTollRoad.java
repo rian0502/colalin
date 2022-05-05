@@ -1,12 +1,61 @@
 package com.belajar.colalin.homeView.viewModel;
 
+import android.content.Context;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 
+import com.belajar.colalin.apiService.ApiClient;
+import com.belajar.colalin.apiService.RegisterAccount;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ViewModelTollRoad extends ViewModel {
-    private int gol2,gol3,gol4,gol5a,gol5b,gol6a,gol6b,gol7a,gol7b,gol7c;
+    private int gol2, gol3, gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c;
+    private String start;
+    private String end;
+    private String date;
+
+    public ViewModelTollRoad() {
+        this.start = DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now());
+        this.date = DateTimeFormatter.ofPattern("dd-MM-yyyy").format(LocalDate.now());
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getEnd() {
+        return end;
+    }
+
+    public void setEnd(String end) {
+        this.end = end;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public void addGol2() {
-        this.gol2 +=1;
+        this.gol2 += 1;
     }
 
     public void addGol3() {
@@ -22,7 +71,7 @@ public class ViewModelTollRoad extends ViewModel {
     }
 
     public void addGol5b() {
-        this.gol5b +=1 ;
+        this.gol5b += 1;
     }
 
     public void addGol6a() {
@@ -83,5 +132,43 @@ public class ViewModelTollRoad extends ViewModel {
 
     public int getGol7c() {
         return gol7c;
+    }
+
+    public void resetValue() {
+        gol2 = 0;
+        gol3 = 0;
+        gol4 = 0;
+        gol5a = 0;
+        gol5b = 0;
+        gol6a = 0;
+        gol6b = 0;
+        gol7a = 0;
+        gol7b = 0;
+        gol7c = 0;
+    }
+
+    public void postValue(String lokasi, int id, Context context) {
+        Call< ArrayList< RegisterAccount > > postData = ApiClient
+                .getService()
+                .sendData(lokasi, "Toll Road", date, start, end, 0, gol2, gol3,
+                        gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c, 0, id);
+        postData.enqueue(new Callback< ArrayList< RegisterAccount > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
+                                   @NonNull Response< ArrayList< RegisterAccount > > response) {
+                if (response.isSuccessful()
+                        && Objects.requireNonNull(response.body()).size() != 0) {
+                    resetValue();
+                    Toast.makeText(context, "Data Tersimpan", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Data Gagal Tersimpan", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call, Throwable t) {
+                Toast.makeText(context, "Jaringan Eror", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

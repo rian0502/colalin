@@ -14,6 +14,9 @@ import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentOneWayBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelOneWay;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class FragmentOneWay extends Fragment implements View.OnClickListener {
     private FragmentOneWayBinding binding;
     private ViewModelOneWay counter;
@@ -30,6 +33,7 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
         counter = new ViewModelProvider(requireActivity()).get(ViewModelOneWay.class);
         bindingTvViewModel();
         bindingButtonClick();
+        Toast.makeText(getContext(), this.getArguments().getString("id"), Toast.LENGTH_SHORT).show();
         return binding.getRoot();
     }
 
@@ -40,10 +44,16 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_save:
-                    Toast.makeText(getContext(), "Save", Toast.LENGTH_SHORT).show();
+                    counter.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
+                    counter.postValue("Mekar Sari",
+                            Integer.parseInt(this.getArguments().getString("id")),
+                            getContext()
+                    );
+                    bindingTvViewModel();
                     return true;
                 case R.id.nav_clear:
-                    Toast.makeText(getContext(), "Reset", Toast.LENGTH_SHORT).show();
+                    counter.resetValue();
+                    bindingTvViewModel();
                     return true;
             }
             return false;
