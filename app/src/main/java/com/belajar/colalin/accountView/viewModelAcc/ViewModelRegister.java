@@ -1,8 +1,6 @@
 package com.belajar.colalin.accountView.viewModelAcc;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -10,14 +8,10 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
-import androidx.navigation.NavController;
 
 import com.belajar.colalin.MainActivity;
-import com.belajar.colalin.R;
-import com.belajar.colalin.accountView.LoginFragment;
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.apiService.RegisterAccount;
 
@@ -31,16 +25,8 @@ public class ViewModelRegister extends ViewModel {
     private String username;
     private String password;
     private String phone;
+    @SuppressLint("StaticFieldLeak")
     private FragmentActivity context;
-    private boolean suksess;
-
-    public boolean isSuksess() {
-        return suksess;
-    }
-
-    public void setSuksess(boolean suksess) {
-        this.suksess = suksess;
-    }
 
 
     public FragmentActivity getContext() {
@@ -75,21 +61,25 @@ public class ViewModelRegister extends ViewModel {
         this.phone = phone;
     }
 
-    public void checkUsername(Button button, ProgressBar progressBar){
-        Call<ArrayList<RegisterAccount>> user = ApiClient.getService().userExistCheck(getUsername());
+    public void checkUsername(Button button, ProgressBar progressBar) {
+        Call< ArrayList< RegisterAccount > > user = ApiClient.getService().userExistCheck(getUsername());
         user.enqueue(new Callback< ArrayList< RegisterAccount > >() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
                                    @NonNull Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful() && response.body().size() != 0){
-                    if (response.body().get(0).getStatus().equals("ready")){
-                        checkPhone(button, progressBar);
-                    }else{
-                        Toast.makeText(context, "Username Sudah terdaftar",
-                                Toast.LENGTH_SHORT).show();
-                        button.setClickable(true);
-                        button.setText("Register");
-                        progressBar.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    if (response.body().size() != 0) {
+                        if (response.body().get(0).getStatus().equals("ready")) {
+                            checkPhone(button, progressBar);
+                        } else {
+                            Toast.makeText(context, "Username Sudah terdaftar",
+                                    Toast.LENGTH_SHORT).show();
+                            button.setClickable(true);
+                            button.setText("Register");
+                            progressBar.setVisibility(View.GONE);
+                        }
                     }
                 }
             }
@@ -102,26 +92,31 @@ public class ViewModelRegister extends ViewModel {
         });
     }
 
-    public void checkPhone(Button button, ProgressBar progressBar){
-        Call<ArrayList<RegisterAccount>>  phone =
+    public void checkPhone(Button button, ProgressBar progressBar) {
+        Call< ArrayList< RegisterAccount > > phone =
                 ApiClient.getService().phoneExsitCheck(getPhone());
         phone.enqueue(new Callback< ArrayList< RegisterAccount > >() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onResponse(Call< ArrayList< RegisterAccount > > call,
+            public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
                                    @NonNull Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful() && response.body().size() != 0){
-                    if (response.body().get(0).getStatus().equals("ready")){
-                        registrasi(button, progressBar);
-                    }else{
-                        Toast.makeText(context, "No Handphone Sudah terdaftar",
-                                Toast.LENGTH_LONG).show();
-                        button.setClickable(true);
-                        button.setText("Register");
-                        progressBar.setVisibility(View.GONE);
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    if (response.body().size() != 0) {
+                        if (response.body().get(0).getStatus().equals("ready")) {
+                            registrasi(button, progressBar);
+                        } else {
+                            Toast.makeText(context, "No Handphone Sudah terdaftar",
+                                    Toast.LENGTH_LONG).show();
+                            button.setClickable(true);
+                            button.setText("Register");
+                            progressBar.setVisibility(View.GONE);
+                        }
                     }
                 }
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call,
                                   @NonNull Throwable t) {
@@ -134,15 +129,17 @@ public class ViewModelRegister extends ViewModel {
     }
 
 
-    public void registrasi(Button button, ProgressBar progressBar){
+    public void registrasi(Button button, ProgressBar progressBar) {
         Call< ArrayList< RegisterAccount > > register =
                 ApiClient.getService().registerUser(getPassword(), getUsername(), getPhone());
         register.enqueue(new Callback< ArrayList< RegisterAccount > >() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
                                    @NonNull Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful()){
-                    if (response.body().get(0).getStatus().equals("sukses")){
+                if (response.isSuccessful()) {
+                    assert response.body() != null;
+                    if (response.body().get(0).getStatus().equals("sukses")) {
                         Toast.makeText(context, "Registrasi Berhasil", Toast.LENGTH_SHORT).show();
                         button.setClickable(true);
                         button.setText("Register");
@@ -152,19 +149,21 @@ public class ViewModelRegister extends ViewModel {
                                 Intent.FLAG_ACTIVITY_CLEAR_TASK |
                                 Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
-                    }else {
+                    } else {
                         Toast.makeText(context, "Registrasi Gagal", Toast.LENGTH_SHORT).show();
-                        setSuksess(false);
-
+                        button.setClickable(true);
+                        button.setText("Register");
+                        progressBar.setVisibility(View.GONE);
                     }
                 }
             }
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call,
                                   @NonNull Throwable t) {
                 Toast.makeText(context, "Eror Internal", Toast.LENGTH_SHORT).show();
-                setSuksess(false);
+
                 button.setClickable(true);
                 button.setText("Register");
                 progressBar.setVisibility(View.GONE);
