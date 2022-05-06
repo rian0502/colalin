@@ -78,7 +78,8 @@ public class FpasswordFragment extends Fragment {
         binding.inputOtp.setVisibility(View.VISIBLE);
         binding.layoutOtpInput.setVisibility(View.VISIBLE);
     }
-    private void sendOTP(String number){
+
+    private void sendOTP(String number) {
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
                         .setPhoneNumber("+62" + number)
@@ -95,7 +96,7 @@ public class FpasswordFragment extends Fragment {
                 public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                     final String code = phoneAuthCredential.getSmsCode();
 
-                    if (code.trim().equals("")){
+                    if (code.trim().equals("")) {
                         vertifOTP(code);
                     }
                 }
@@ -107,7 +108,7 @@ public class FpasswordFragment extends Fragment {
             };
 
 
-    private void vertifOTP(String code){
+    private void vertifOTP(String code) {
 
     }
 

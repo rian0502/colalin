@@ -6,17 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
-
 import com.belajar.colalin.MainActivity;
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.apiService.RegisterAccount;
-
 import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,7 +58,8 @@ public class ViewModelRegister extends ViewModel {
     }
 
     public void checkUsername(Button button, ProgressBar progressBar) {
-        Call< ArrayList< RegisterAccount > > user = ApiClient.getService().userExistCheck(getUsername());
+        Call< ArrayList< RegisterAccount > > user =
+                ApiClient.getService().userExistCheck(getUsername());
         user.enqueue(new Callback< ArrayList< RegisterAccount > >() {
             @SuppressLint("SetTextI18n")
             @Override

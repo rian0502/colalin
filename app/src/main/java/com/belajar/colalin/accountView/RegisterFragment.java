@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.viewModelAcc.ViewModelRegister;
 import com.belajar.colalin.databinding.FragmentRegisterBinding;
@@ -42,17 +44,21 @@ public class RegisterFragment extends Fragment {
         navController = Navigation.findNavController(view);
         binding.buttonRegister
                 .setOnClickListener(view1 -> {
-                   if ( cekField(binding.inputUsernameRegister,
-                           binding.inputPasswordRegister,
-                           binding.inputPhoneRegister)){
-                       modelRegister.setPassword(binding.inputPasswordRegister.getText().toString().trim());
-                       modelRegister.setPhone(binding.inputPhoneRegister.getText().toString().trim());
-                       modelRegister.setUsername(binding.inputUsernameRegister.getText().toString().trim());
-                       binding.buttonRegister.setClickable(false);
-                       binding.buttonRegister.setText("");
-                       binding.progressRegister.setVisibility(View.VISIBLE);
-                       modelRegister.checkUsername(binding.buttonRegister, binding.progressRegister);
-                   }
+                    if (cekField(binding.inputUsernameRegister,
+                            binding.inputPasswordRegister,
+                            binding.inputPhoneRegister)) {
+                        modelRegister.setPassword(binding.inputPasswordRegister
+                                .getText().toString().trim());
+                        modelRegister.setPhone(binding.inputPhoneRegister
+                                .getText().toString().trim());
+                        modelRegister.setUsername(binding.inputUsernameRegister
+                                .getText().toString().trim());
+                        binding.buttonRegister.setClickable(false);
+                        binding.buttonRegister.setText("");
+                        binding.progressRegister.setVisibility(View.VISIBLE);
+                        modelRegister.
+                                checkUsername(binding.buttonRegister, binding.progressRegister);
+                    }
                 });
     }
 

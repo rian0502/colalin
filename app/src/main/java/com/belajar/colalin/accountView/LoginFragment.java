@@ -116,6 +116,7 @@ public class LoginFragment extends Fragment {
         }
         return true;
     }
+
     private void loginAuth() {
         Call< ArrayList< LoginAuth > >
                 authCall = ApiClient.getService().loginAuth(

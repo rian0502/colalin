@@ -33,7 +33,6 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
         counter = new ViewModelProvider(requireActivity()).get(ViewModelOneWay.class);
         bindingTvViewModel();
         bindingButtonClick();
-        Toast.makeText(getContext(), this.getArguments().getString("id"), Toast.LENGTH_SHORT).show();
         return binding.getRoot();
     }
 
