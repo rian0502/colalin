@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".accountView.FpasswordFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".accountView.FragmentAuth">
 
+    <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:id="@+id/image_forgot"
+        android:id="@+id/image_otp"
         android:layout_width="300dp"
         android:layout_height="180dp"
         android:layout_gravity="center"
         android:layout_marginTop="20sp"
-        android:contentDescription="logo lupa password"
+        android:contentDescription="logo OTP"
         android:scaleType="fitXY"
-        android:src="@drawable/fpassword" />
+        android:src="@drawable/otp" />
 
     <TextView
-        android:id="@+id/tv_forgot_password"
+        android:id="@+id/tvSendingOTP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20sp"
         android:layout_marginBottom="20sp"
-        android:text="Forgot Password"
+        android:text="Sending OTP"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -34,21 +35,22 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_phone_number"
+            android:id="@+id/tvOTP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="35dp"
-            android:text="@string/username"
+            android:text="OTP"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+             />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layout_otp_input"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,47 +61,30 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/input_username_forgot"
+                    android:id="@+id/input_otp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="40sp"
                     android:layout_marginEnd="40sp"
-                    android:hint="Cari Usernae"
-                    android:inputType="text"
+                    android:hint="Code OTP"
+                    android:inputType="number"
+                    android:maxLength="6"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_vertivikasi"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp">
+        android:layout_marginStart="40sp"
+        android:layout_marginTop="30sp"
+        android:layout_marginEnd="40sp"
+        android:backgroundTint="#066163"
+        android:text="Vertivication"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        app:cornerRadius="10dp" />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_next"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40sp"
-                android:layout_marginEnd="40sp"
-                android:backgroundTint="#066163"
-                android:text="Next"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                app:cornerRadius="10dp" />
-        </FrameLayout>
-
-        <ProgressBar
-            android:id="@+id/progress_findUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="20sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:indeterminateTint="@color/white"
-            android:visibility="gone" />
-    </RelativeLayout>
 </LinearLayout>

@@ -29,7 +29,8 @@ public interface ApiService {
 
     @GET("phone_exist.php")
     Call< ArrayList< RegisterAccount > > phoneExsitCheck(@Query("phone") String phone);
-
+    @GET("user_phone.php")
+    Call<ArrayList<UserPhone>> getUserPhone(@Query("username") String username);
     @FormUrlEncoded
     @POST("register.php")
     Call< ArrayList< RegisterAccount > > registerUser(@Field("password") String password,
