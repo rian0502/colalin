@@ -13,6 +13,20 @@ import retrofit2.http.Query;
 
 public interface ApiService {
 
+    @GET("user_exist.php")
+    Call< ArrayList< RegisterAccount > > userExistCheck(@Query("username") String username);
+
+    @GET("phone_exist.php")
+    Call< ArrayList< RegisterAccount > > phoneExsitCheck(@Query("phone") String phone);
+
+    @GET("user_phone.php")
+    Call<ArrayList<UserPhone>> getUserPhone(@Query("username") String username);
+
+    @POST("update_pass.php")
+    Call<ArrayList<RegisterAccount>> updatePass(@Query("username")String username,
+                                                @Query("password")String password
+    );
+
     @FormUrlEncoded
     @POST("login.php")
     Call< ArrayList< LoginAuth > > loginAuth(
@@ -24,20 +38,12 @@ public interface ApiService {
     @POST("show_data.php")
     Call< ArrayList< ModelData > > showData(@Field("id_account") int id_account);
 
-    @GET("user_exist.php")
-    Call< ArrayList< RegisterAccount > > userExistCheck(@Query("username") String username);
-
-    @GET("phone_exist.php")
-    Call< ArrayList< RegisterAccount > > phoneExsitCheck(@Query("phone") String phone);
-    @GET("user_phone.php")
-    Call<ArrayList<UserPhone>> getUserPhone(@Query("username") String username);
     @FormUrlEncoded
     @POST("register.php")
     Call< ArrayList< RegisterAccount > > registerUser(@Field("password") String password,
                                                       @Field("username") String username,
                                                       @Field("phone") String phone
     );
-
     @FormUrlEncoded
     @POST("insert.php")
     Call< ArrayList< RegisterAccount > > sendData(@Field("lokasi") String lokasi,

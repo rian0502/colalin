@@ -41,8 +41,8 @@ public class FragmentAuth extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModelAuth.sendOTP();
         binding.buttonVertivikasi.setOnClickListener(view1 -> {
-            if (binding.tvOTP.getText().toString().trim().isEmpty()){
-                binding.tvOTP.setError("OTP harus di isi");
+            if (binding.inputOtp.getText().toString().trim().isEmpty()){
+                binding.inputOtp.setError("OTP harus di isi");
             }else {
                 viewModelAuth.vertifOTP(Objects.requireNonNull(binding.inputOtp.getText())
                         .toString()

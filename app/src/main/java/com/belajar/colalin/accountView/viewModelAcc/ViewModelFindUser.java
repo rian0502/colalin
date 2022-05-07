@@ -61,7 +61,7 @@ public class ViewModelFindUser extends ViewModel {
                         fragment.setArguments(bundle);
                         context.getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.container_account_view, fragment)
-                                .addToBackStack("register")
+                                .addToBackStack(null)
                                 .commit();
                     }else{
                         Toast.makeText(context, "username tidak ada", Toast.LENGTH_SHORT).show();

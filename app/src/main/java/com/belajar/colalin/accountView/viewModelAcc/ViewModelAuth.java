@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
-
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.NewPasswordFragment;
 import com.google.firebase.FirebaseException;
@@ -116,7 +115,7 @@ public class ViewModelAuth extends ViewModel {
                         bundle.putString("username",getUsername());
                         context.getSupportFragmentManager()
                                 .beginTransaction()
-                                .replace(R.id.container_account_view, fragment)
+                                .replace(R.id.container_account_view, fragment).addToBackStack(null)
                                 .commit();
                     }else{
                         Toast.makeText(context, "Vertivikasi Gagal",Toast.LENGTH_SHORT)
