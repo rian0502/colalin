@@ -46,6 +46,7 @@ public class ViewModelAuth extends ViewModel {
 
     public ViewModelAuth() {
         mAuth = FirebaseAuth.getInstance();
+        mAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
         fragment = new NewPasswordFragment();
     }
 
@@ -113,6 +114,7 @@ public class ViewModelAuth extends ViewModel {
                         Bundle bundle = new Bundle();
                         bundle.putString("phone",getPhone());
                         bundle.putString("username",getUsername());
+                        fragment.setArguments(bundle);
                         context.getSupportFragmentManager()
                                 .beginTransaction()
                                 .replace(R.id.container_account_view, fragment).addToBackStack(null)

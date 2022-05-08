@@ -22,9 +22,10 @@ public interface ApiService {
     @GET("user_phone.php")
     Call<ArrayList<UserPhone>> getUserPhone(@Query("username") String username);
 
+    @FormUrlEncoded
     @POST("update_pass.php")
-    Call<ArrayList<RegisterAccount>> updatePass(@Query("username")String username,
-                                                @Query("password")String password
+    Call<ArrayList<RegisterAccount>> updatePass(@Field("username")String username,
+                                                @Field("password")String password
     );
 
     @FormUrlEncoded
