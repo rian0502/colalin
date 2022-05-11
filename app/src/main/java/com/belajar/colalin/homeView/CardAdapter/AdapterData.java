@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,7 +64,18 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
         Glide.with(context)
                 .load(md.getImageResource())
                 .into(holder.itemCounterBinding.gambarJalan);
-
+        holder.itemCounterBinding.arrowEnter.setOnClickListener(new OnItemClick(position, ((view, position1) -> {
+            Intent intent = new Intent(context, DataInfoActivity.class);
+            if (md.getTypeJalan().equals("One Way")){
+                intent.putExtra("jenis", md.getTypeJalan());
+            }else if (md.getTypeJalan().equals("Two Way")){
+                intent.putExtra("jenis", md.getTypeJalan());
+            }else if (md.getTypeJalan().equals("Toll Road")){
+                intent.putExtra("jenis", md.getTypeJalan());
+            }
+            intent.putExtra("id",md.getId_counter());
+            context.startActivity(intent);
+        })));
     }
 
     @Override

@@ -38,6 +38,10 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("show_counter.php")
     Call<ArrayList< ListCounter >> getList(@Field("id_akun") int id);
+    @FormUrlEncoded
+    @POST("show_detail.php")
+    Call<ListCounter> getDetail(@Field("id_akun") int id,
+                                @Field("id_counter")int counter);
 
 
     @FormUrlEncoded

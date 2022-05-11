@@ -4,6 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class ListCounter {
+    @SerializedName("id_counter")
+    @Expose
+    private String id_counter;
+
     @SerializedName("lokasi")
     @Expose
     private String lokasi;
@@ -20,15 +24,53 @@ public class ListCounter {
     @Expose
     private String selesai;
 
+    private int imageResource;
+
+    private OneWay oneWay;
+    private TwoWay twoWay;
+    private TollRoad tollRoad;
+
+    public OneWay getOneWay() {
+        return oneWay;
+    }
+
+    public void setOneWay(OneWay oneWay) {
+        this.oneWay = oneWay;
+    }
+
+    public TwoWay getTwoWay() {
+        return twoWay;
+    }
+
+    public void setTwoWay(TwoWay twoWay) {
+        this.twoWay = twoWay;
+    }
+
+    public TollRoad getTollRoad() {
+        return tollRoad;
+    }
+
+    public void setTollRoad(TollRoad tollRoad) {
+        this.tollRoad = tollRoad;
+    }
+
     public int getImageResource() {
         return imageResource;
+    }
+
+    public String getId_counter() {
+        return id_counter;
+    }
+
+    public void setId_counter(String id_counter) {
+        this.id_counter = id_counter;
     }
 
     public void setImageResource(int imageResource) {
         this.imageResource = imageResource;
     }
 
-    private int imageResource;
+
     public String getLokasi() {
         return lokasi;
     }
