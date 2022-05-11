@@ -44,10 +44,8 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
             switch (item.getItemId()) {
                 case R.id.nav_save:
                     counter.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-                    counter.postValue("Mekar Sari",
-                            Integer.parseInt(this.getArguments().getString("id")),
-                            getContext()
-                    );
+
+
                     bindingTvViewModel();
                     return true;
                 case R.id.nav_clear:

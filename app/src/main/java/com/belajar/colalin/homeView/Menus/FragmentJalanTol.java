@@ -53,8 +53,6 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                 case R.id.nav_save:
                     viewmodel.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
                     assert this.getArguments() != null;
-                    viewmodel.postValue("Merak", Integer.parseInt(this.getArguments()
-                            .getString("id")), getContext());
                     bindingTvViewModel();
                     return true;
             }

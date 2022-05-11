@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.belajar.colalin.apiService.Models.ListCounter;
 import com.belajar.colalin.databinding.ItemCounterBinding;
 import com.belajar.colalin.homeView.Models.ModelData;
 import com.belajar.colalin.homeView.infoData.DataInfoActivity;
@@ -16,21 +18,21 @@ import java.util.ArrayList;
 
 public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > {
     private Context context;
-    private ArrayList<ModelData> modelData = new ArrayList<>();
+    private ArrayList< ListCounter > modelData = new ArrayList<>();
     public AdapterData(Context context) {
         this.context = context;
     }
-    public void updateData(ArrayList<ModelData> modelData){
+    public void updateData(ArrayList<ListCounter> modelData){
         this.modelData.clear();
         this.modelData = modelData;
         notifyDataSetChanged();
     }
 
-    public ArrayList< ModelData > getModelData() {
+    public ArrayList< ListCounter > getModelData() {
         return modelData;
     }
 
-    public void setModelData(ArrayList< ModelData > modelData) {
+    public void setModelData(ArrayList< ListCounter > modelData) {
         this.modelData = modelData;
     }
 
@@ -53,19 +55,14 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
 
     @Override
     public void onBindViewHolder(@NonNull HolderData holder, int position) {
-        ModelData md = modelData.get(position);
+        ListCounter md = modelData.get(position);
         holder.itemCounterBinding.tvDate.setText(md.getTanggal());
         holder.itemCounterBinding.tvLocation.setText(md.getLokasi());
-        holder.itemCounterBinding.tvJenisJalan.setText(md.getJenisJalan());
+        holder.itemCounterBinding.tvJenisJalan.setText(md.getTypeJalan());
         Glide.with(context)
                 .load(md.getImageResource())
                 .into(holder.itemCounterBinding.gambarJalan);
-        holder.itemCounterBinding.arrowEnter.setOnClickListener(new OnItemClick(position,((view, position1) -> {
-            Intent intent = new Intent(context, DataInfoActivity.class);
-            intent.putExtra("data", md);
-            intent.putExtra("kendaraan", md.getKendaraan());
-            context.startActivity(intent);
-        })));
+
     }
 
     @Override

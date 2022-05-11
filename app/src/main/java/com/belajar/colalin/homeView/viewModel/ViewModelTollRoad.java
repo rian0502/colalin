@@ -147,28 +147,5 @@ public class ViewModelTollRoad extends ViewModel {
         gol7c = 0;
     }
 
-    public void postValue(String lokasi, int id, Context context) {
-        Call< ArrayList< RegisterAccount > > postData = ApiClient
-                .getService()
-                .sendData(lokasi, "Toll Road", date, start, end, 0, gol2, gol3,
-                        gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c, 0, id);
-        postData.enqueue(new Callback< ArrayList< RegisterAccount > >() {
-            @Override
-            public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
-                                   @NonNull Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful()
-                        && Objects.requireNonNull(response.body()).size() != 0) {
-                    resetValue();
-                    Toast.makeText(context, "Data Tersimpan", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Data Gagal Tersimpan", Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call, Throwable t) {
-                Toast.makeText(context, "Jaringan Eror", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }

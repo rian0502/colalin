@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.belajar.colalin.apiService.Models.ListCounter;
 import com.belajar.colalin.databinding.FragmentDataBinding;
 import com.belajar.colalin.homeView.CardAdapter.AdapterData;
 import com.belajar.colalin.homeView.Models.ModelData;
@@ -47,13 +48,13 @@ public class DataFragment extends Fragment {
         binding.containerDataFragment.setAdapter(adapter);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModelData.setMovieData(this.getArguments().getString("id"));
-        viewModelData.getModelData().observe(getActivity(), dataObserver);
+        viewModelData.getModelData().observe(getActivity(),  dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    private Observer< ArrayList< ModelData > > dataObserver = new Observer< ArrayList< ModelData > >() {
+    private Observer< ArrayList< ListCounter > > dataObserver = new Observer< ArrayList< ListCounter > >() {
         @Override
-        public void onChanged(ArrayList< ModelData > modelData) {
+        public void onChanged(ArrayList< ListCounter > modelData) {
             adapter.updateData(modelData);
         }
     };

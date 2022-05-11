@@ -164,48 +164,4 @@ public class ViewModelOneWay extends ViewModel {
 
     }
 
-    public void postValue(String lokasi, int id, Context context){
-        Call< ArrayList< RegisterAccount > > postData = ApiClient.getService().sendData(
-                lokasi,
-                "One Way",
-                getDate(),
-                getStart(),
-                getEnd(),
-                getGol_1(),
-                getGol_2(),
-                getGol_3(),
-                getGol_4(),
-                getGol_5a(),
-                getGol_5b(),
-                getGol_6a(),
-                getGol_6b(),
-                getGol_7a(),
-                getGol_7b(),
-                getGol_7c(),
-                getGol_8(),
-                id
-        );
-        postData.enqueue(new Callback< ArrayList< RegisterAccount > >() {
-            @Override
-            public void onResponse(@NonNull Call< ArrayList< RegisterAccount > > call,
-                                   @NonNull Response< ArrayList< RegisterAccount > > response) {
-                if (response.isSuccessful()) {
-                    assert response.body() != null;
-                    if (response.body().size() != 0) {
-                        if (response.body().get(0).getStatus().equals("sukses")) {
-                            resetValue();
-                            Toast.makeText(context, "Data Tersimpan", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(context, "Data Gagal Tersimpan", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call< ArrayList< RegisterAccount > > call, @NonNull Throwable t) {
-                Toast.makeText(context, "Jaringan Eror", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 }
