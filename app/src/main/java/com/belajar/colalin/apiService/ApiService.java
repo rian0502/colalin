@@ -39,7 +39,9 @@ public interface ApiService {
     @POST("show_counter.php")
     Call<ArrayList< ListCounter >> getList(@Field("id_akun") int id);
 
-
+    @FormUrlEncoded
+    @POST("show_detail.php")
+    Call<ArrayList<ListCounter>> getDetaill();
 
     @FormUrlEncoded
     @POST("register.php")
