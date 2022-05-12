@@ -23,13 +23,17 @@ public class ListCounter {
     @SerializedName("selesai")
     @Expose
     private String selesai;
-
-    private int imageResource;
-
+    @SerializedName("one_way")
+    @Expose
     private OneWay oneWay;
+    @SerializedName("two_way")
+    @Expose
     private TwoWay twoWay;
+    @SerializedName("toll_road")
+    @Expose
     private TollRoad tollRoad;
 
+    private int imageResource;
     public OneWay getOneWay() {
         return oneWay;
     }

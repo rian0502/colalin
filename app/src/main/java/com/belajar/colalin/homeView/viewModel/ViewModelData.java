@@ -19,7 +19,7 @@ public class ViewModelData extends ViewModel {
     public ViewModelData() {
         this.data = new MutableLiveData<>();
     }
-    public void setMovieData(String id){
+    public void setModelData(String id){
         Call<ArrayList< ListCounter >> listCall = ApiClient.getService().getList(Integer.parseInt(id));
         listCall.enqueue(new Callback< ArrayList< ListCounter > >() {
             @Override

@@ -21,8 +21,10 @@ import java.util.ArrayList;
 public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > {
     private Context context;
     private ArrayList< ListCounter > modelData = new ArrayList<>();
-    public AdapterData(Context context) {
+    private String id_akun;
+    public AdapterData(Context context, String id_akun) {
         this.context = context;
+        this.id_akun = id_akun;
     }
     public void updateData(ArrayList<ListCounter> modelData){
         this.modelData.clear();
@@ -74,6 +76,7 @@ public class AdapterData extends RecyclerView.Adapter< AdapterData.HolderData > 
                 intent.putExtra("jenis", md.getTypeJalan());
             }
             intent.putExtra("id",md.getId_counter());
+            intent.putExtra("id_akun", id_akun);
             context.startActivity(intent);
         })));
     }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityDataInfoBinding;
@@ -18,18 +19,23 @@ public class DataInfoActivity extends AppCompatActivity {
         binding = ActivityDataInfoBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         bundle = getIntent().getExtras();
+        changeFragmentInfoData();
+    }
+
+    private void changeFragmentInfoData() {
+        Fragment fragment = null;
         if (bundle.getString("jenis").equals("One Way")){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container_data_counter, new FragmentDataOne()).commit();
+            fragment = new FragmentDataOne();
+            fragment.setArguments(bundle);
         }else if (bundle.get("jenis").equals("Two Way")){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container_data_counter, new FragmentDataTwo()).commit();
+            fragment = new FragmentDataTwo();
+            fragment.setArguments(bundle);
         }else if (bundle.getString("jenis").equals("Toll Road")){
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.container_data_counter, new FragmentDataToll()).commit();
+            fragment = new FragmentDataToll();
+            fragment.setArguments(bundle);
         }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_data_counter, fragment).commit();
     }
 }
