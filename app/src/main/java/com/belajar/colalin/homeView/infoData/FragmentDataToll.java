@@ -1,24 +1,17 @@
 package com.belajar.colalin.homeView.infoData;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.belajar.colalin.R;
-import com.belajar.colalin.apiService.Models.ListCounter;
 import com.belajar.colalin.databinding.FragmentDataTollBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelDataToll;
-
-import java.util.ArrayList;
 
 public class FragmentDataToll extends Fragment {
     private FragmentDataTollBinding binding;
@@ -28,11 +21,12 @@ public class FragmentDataToll extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentDataTollBinding.inflate(inflater, container, false);
         viewModelDataToll = new ViewModelProvider(getActivity()).get(ViewModelDataToll.class);
+        assert this.getArguments() != null;
         int id = Integer.parseInt(this.getArguments().getString("id_akun"));
         int counter = Integer.parseInt(this.getArguments().getString("id"));
         viewModelDataToll.setData(id, counter);
@@ -47,7 +41,6 @@ public class FragmentDataToll extends Fragment {
             binding.waktuPerhitungan.setText(listCounters.get(0).getTanggal());
             binding.jamMulai.setText(listCounters.get(0).getMulai());
             binding.jamSelesai.setText(listCounters.get(0).getSelesai());
-
             binding.golongan2.setText(listCounters.get(0).getTollRoad().getGol2());
             binding.golongan3.setText(listCounters.get(0).getTollRoad().getGol3());
             binding.golongan4.setText(listCounters.get(0).getTollRoad().getGol4());

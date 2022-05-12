@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".homeView.infoData.FragmentDataToll">
 
-    <!-- TODO: Update blank fragment layout -->
     <de.hdodenhof.circleimageview.CircleImageView
 
         android:layout_width="60sp"
@@ -20,7 +19,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Toll Road"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <GridLayout
@@ -43,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginStart="20sp"
-            android:text="Braga" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginStart="20sp"
-            android:text="26/14/22" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginStart="20sp"
-            android:text="10:30" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginStart="20sp"
-            android:text="10:30" />
+            android:text="@string/zero_value" />
 
 
         <TextView
@@ -101,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -113,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -127,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
 
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -139,7 +138,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -151,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -163,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -175,7 +174,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -187,7 +186,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -199,7 +198,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -211,7 +210,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="10" />
+            android:text="@string/zero_value" />
 
 
     </GridLayout>
