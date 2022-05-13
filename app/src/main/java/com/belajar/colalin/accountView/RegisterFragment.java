@@ -32,7 +32,6 @@ public class RegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(inflater, container, false);
-
         modelRegister = new ViewModelProvider(this).get(ViewModelRegister.class);
         modelRegister.setContext(getActivity());
         return binding.getRoot();

@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.apiService.RegisterAccount;
+import com.belajar.colalin.apiService.StatusRespons;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -147,5 +148,27 @@ public class ViewModelTollRoad extends ViewModel {
         gol7c = 0;
     }
 
+    public void saveData(String lokasi, int id){
+        Call<ArrayList< StatusRespons >> saveToll = ApiClient.getService().insert_toll(
+                lokasi, "Toll Road", getDate(), getStart(), getEnd(), id,
+                gol2, gol3, gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c
+        );
+        saveToll.enqueue(new Callback< ArrayList< StatusRespons > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
+                                   @NonNull Response< ArrayList< StatusRespons > > response) {
+                if (response.isSuccessful()){
+                    if (response.body().get(0).getStatus().equals("sukses")){
 
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
+                                  @NonNull Throwable t) {
+
+            }
+        });
+    }
 }

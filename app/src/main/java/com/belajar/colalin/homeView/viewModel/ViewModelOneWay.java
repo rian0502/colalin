@@ -1,12 +1,15 @@
 package com.belajar.colalin.homeView.viewModel;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.apiService.RegisterAccount;
+import com.belajar.colalin.apiService.StatusRespons;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -163,5 +166,28 @@ public class ViewModelOneWay extends ViewModel {
         gol_8 = 0;
 
     }
+    public void saveData(String lokasi, int id){
+        Call<ArrayList< StatusRespons >> saveOne = ApiClient.getService().insert_one(
+                lokasi, "One Way",getDate(),getStart(), getEnd(),id,
+                gol_1, gol_2, gol_3, gol_4, gol_5a, gol_5b, gol_6a, gol_6b,
+                gol_7a, gol_7b, gol_7c, gol_8
+        );
+        saveOne.enqueue(new Callback< ArrayList< StatusRespons > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
+                                   @NonNull Response< ArrayList< StatusRespons > > response) {
+                if (response.isSuccessful()){
+                    if (response.body().get(0).getStatus().equals("sukses")){
+                        Log.e("Save : ", "Suksess");
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
+                                  @NonNull Throwable t) {
+
+            }
+        });
+    }
 }

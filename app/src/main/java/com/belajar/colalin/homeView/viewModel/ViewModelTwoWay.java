@@ -1,10 +1,19 @@
 package com.belajar.colalin.homeView.viewModel;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
+
+import com.belajar.colalin.apiService.ApiClient;
+import com.belajar.colalin.apiService.StatusRespons;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewModelTwoWay extends ViewModel {
     private int gol_1, gol_2, gol_3, gol_4, gol_5a, gol_5b,
@@ -238,5 +247,50 @@ public class ViewModelTwoWay extends ViewModel {
         this.mgol_8 = mgol_8;
     }
 
+    public void clearData(){
+        setGol_1(0);
+        setGol_2(0);
+        setGol_3(0);
+        setGol_4(0);
+        setGol_5a(0);
+        setGol_5b(0);
+        setGol_6a(0);
+        setGol_6b(0);
+        setGol_7a(0);
+        setGol_7b(0);
+        setGol_7c(0);
+        setGol_8(0);
+        setMgol_1(0);
+        setMgol_2(0);
+        setMgol_3(0);
+        setMgol_4(0);
+        setMgol_5a(0);
+        setGol_5b(0);
+        setMgol_6a(0);
+        setMgol_6a(0);
+        setMol_7a(0);
+        setMgol_7b(0);
+        setMgol_7c(0);
+        setMgol_8(0);
+    }
+    public void saveData(String lokasi, int id){
+        Call< ArrayList< StatusRespons > > saveTwo = ApiClient.getService().insert_two(
+                lokasi,"Two Way", getDate(), getStart(), getEnd(),id,gol_1,gol_2,gol_3,gol_4,
+                gol_5a, gol_5b, gol_6a, gol_6b, gol_7a, gol_7b, gol_7c, gol_8, mgol_1, mgol_2, mgol_3,
+                mgol_4, mgol_5a, mgol_5b, mgol_6a, mgol_6b, mol_7a, mgol_7b, mgol_7c, mgol_8
+        );
+        saveTwo.enqueue(new Callback< ArrayList< StatusRespons > >() {
+            @Override
+            public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
+                                   @NonNull Response< ArrayList< StatusRespons > > response) {
 
+            }
+
+            @Override
+            public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
+                                  @NonNull Throwable t) {
+
+            }
+        });
+    }
 }

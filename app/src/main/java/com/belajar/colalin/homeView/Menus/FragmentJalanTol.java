@@ -1,10 +1,13 @@
 package com.belajar.colalin.homeView.Menus;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -44,6 +47,7 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        EditText lokasi = new EditText(getContext());
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_clear:
@@ -52,8 +56,17 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                     return true;
                 case R.id.nav_save:
                     viewmodel.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-                    assert this.getArguments() != null;
-                    bindingTvViewModel();
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Lokasi")
+                            .setMessage("Masukkan lokasi anda saat ini !")
+                            .setPositiveButton("Yes", (dialogInterface, i) -> {
+                                assert getArguments() != null;
+                                viewmodel.saveData(lokasi.getText().toString().trim(),
+                                        Integer.parseInt(getArguments().getString("id")));
+                            }).setNegativeButton("No", (dialogInterface, i) ->
+                                    dialogInterface.cancel()).setView(lokasi)
+                            .setOnDismissListener(dialogInterface ->
+                                    ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
                     return true;
             }
             return false;

@@ -1,15 +1,18 @@
 package com.belajar.colalin.homeView.Menus;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentOneWayBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelOneWay;
@@ -24,7 +27,6 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
     public FragmentOneWay() {
         // Required empty public constructor
     }
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,12 +42,23 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        EditText lokasi = new EditText(getContext());
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_save:
                     counter.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-
-
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Lokasi")
+                            .setMessage("Masukkan lokasi anda saat ini !")
+                            .setPositiveButton("Yes", (dialogInterface, i) -> {
+                                assert getArguments() != null;
+                                counter.saveData(lokasi.getText().toString().trim(),
+                                        Integer.parseInt(getArguments().getString("id")));
+                            }).setNegativeButton("No", (dialogInterface, i) ->
+                                    dialogInterface.cancel()).setView(lokasi)
+                            .setOnDismissListener(dialogInterface ->
+                                    ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
+                    counter.resetValue();
                     bindingTvViewModel();
                     return true;
                 case R.id.nav_clear:
