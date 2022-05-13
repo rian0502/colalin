@@ -53,7 +53,8 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
                             .setPositiveButton("Yes", (dialogInterface, i) -> {
                                 assert getArguments() != null;
                                 counter.saveData(lokasi.getText().toString().trim(),
-                                        Integer.parseInt(getArguments().getString("id")));
+                                        Integer.parseInt(getArguments().getString("id")),
+                                        getActivity());
                             }).setNegativeButton("No", (dialogInterface, i) ->
                                     dialogInterface.cancel()).setView(lokasi)
                             .setOnDismissListener(dialogInterface ->

@@ -1,6 +1,9 @@
 package com.belajar.colalin.homeView.viewModel;
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
@@ -26,7 +29,7 @@ public class ViewModelTwoWay extends ViewModel {
     private String end;
     private String date;
 
-    public ViewModelTwoWay (){
+    public ViewModelTwoWay() {
         this.start = DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now());
         this.date = DateTimeFormatter.ofPattern("dd-MM-yyyy").format(LocalDate.now());
     }
@@ -247,7 +250,7 @@ public class ViewModelTwoWay extends ViewModel {
         this.mgol_8 = mgol_8;
     }
 
-    public void clearData(){
+    public void clearData() {
         setGol_1(0);
         setGol_2(0);
         setGol_3(0);
@@ -273,23 +276,29 @@ public class ViewModelTwoWay extends ViewModel {
         setMgol_7c(0);
         setMgol_8(0);
     }
-    public void saveData(String lokasi, int id){
+
+    public void saveData(String lokasi, int id, FragmentActivity context) {
         Call< ArrayList< StatusRespons > > saveTwo = ApiClient.getService().insert_two(
-                lokasi,"Two Way", getDate(), getStart(), getEnd(),id,gol_1,gol_2,gol_3,gol_4,
-                gol_5a, gol_5b, gol_6a, gol_6b, gol_7a, gol_7b, gol_7c, gol_8, mgol_1, mgol_2, mgol_3,
-                mgol_4, mgol_5a, mgol_5b, mgol_6a, mgol_6b, mol_7a, mgol_7b, mgol_7c, mgol_8
+                lokasi, "Two Way", getDate(), getStart(), getEnd(), id, gol_1, gol_2, gol_3,
+                gol_4, gol_5a, gol_5b, gol_6a, gol_6b, gol_7a, gol_7b, gol_7c, gol_8, mgol_1, mgol_2,
+                mgol_3, mgol_4, mgol_5a, mgol_5b, mgol_6a, mgol_6b, mol_7a, mgol_7b, mgol_7c, mgol_8
         );
         saveTwo.enqueue(new Callback< ArrayList< StatusRespons > >() {
             @Override
             public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
                                    @NonNull Response< ArrayList< StatusRespons > > response) {
-
+                if (response.body().get(0).getStatus().equals("sukses")) {
+                    Toast.makeText(context, "Data Berhasil di simpan",
+                            Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Data gagal disimpan", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
                                   @NonNull Throwable t) {
-
+                Toast.makeText(context, "Eror internal", Toast.LENGTH_SHORT).show();
             }
         });
     }

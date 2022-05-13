@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
@@ -148,7 +149,7 @@ public class ViewModelTollRoad extends ViewModel {
         gol7c = 0;
     }
 
-    public void saveData(String lokasi, int id){
+    public void saveData(String lokasi, int id, FragmentActivity context){
         Call<ArrayList< StatusRespons >> saveToll = ApiClient.getService().insert_toll(
                 lokasi, "Toll Road", getDate(), getStart(), getEnd(), id,
                 gol2, gol3, gol4, gol5a, gol5b, gol6a, gol6b, gol7a, gol7b, gol7c
@@ -159,7 +160,10 @@ public class ViewModelTollRoad extends ViewModel {
                                    @NonNull Response< ArrayList< StatusRespons > > response) {
                 if (response.isSuccessful()){
                     if (response.body().get(0).getStatus().equals("sukses")){
-
+                        Toast.makeText(context, "Data Berhasil di simpan",
+                                Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context,"Data gagal disimpan",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -167,7 +171,7 @@ public class ViewModelTollRoad extends ViewModel {
             @Override
             public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
                                   @NonNull Throwable t) {
-
+                Toast.makeText(context, "Eror internal", Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -1,19 +1,19 @@
 package com.belajar.colalin.homeView.viewModel;
 
-import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
+
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.RegisterAccount;
 import com.belajar.colalin.apiService.StatusRespons;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -166,7 +166,7 @@ public class ViewModelOneWay extends ViewModel {
         gol_8 = 0;
 
     }
-    public void saveData(String lokasi, int id){
+    public void saveData(String lokasi, int id, FragmentActivity context){
         Call<ArrayList< StatusRespons >> saveOne = ApiClient.getService().insert_one(
                 lokasi, "One Way",getDate(),getStart(), getEnd(),id,
                 gol_1, gol_2, gol_3, gol_4, gol_5a, gol_5b, gol_6a, gol_6b,
@@ -178,7 +178,10 @@ public class ViewModelOneWay extends ViewModel {
                                    @NonNull Response< ArrayList< StatusRespons > > response) {
                 if (response.isSuccessful()){
                     if (response.body().get(0).getStatus().equals("sukses")){
-                        Log.e("Save : ", "Suksess");
+                        Toast.makeText(context, "Data Berhasil di simpan",
+                                Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context,"Data gagal disimpan",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -186,7 +189,7 @@ public class ViewModelOneWay extends ViewModel {
             @Override
             public void onFailure(@NonNull Call< ArrayList< StatusRespons > > call,
                                   @NonNull Throwable t) {
-
+                Toast.makeText(context, "Eror internal", Toast.LENGTH_SHORT).show();
             }
         });
     }

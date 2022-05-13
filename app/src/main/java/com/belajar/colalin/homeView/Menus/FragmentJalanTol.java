@@ -12,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.FragmentJalanTolBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelTollRoad;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -62,11 +64,12 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                             .setPositiveButton("Yes", (dialogInterface, i) -> {
                                 assert getArguments() != null;
                                 viewmodel.saveData(lokasi.getText().toString().trim(),
-                                        Integer.parseInt(getArguments().getString("id")));
+                                        Integer.parseInt(getArguments().getString("id")),
+                                        getActivity());
                             }).setNegativeButton("No", (dialogInterface, i) ->
                                     dialogInterface.cancel()).setView(lokasi)
                             .setOnDismissListener(dialogInterface ->
-                                    ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
+                                    ((ViewGroup) lokasi.getParent()).removeView(lokasi)).show();
                     return true;
             }
             return false;
