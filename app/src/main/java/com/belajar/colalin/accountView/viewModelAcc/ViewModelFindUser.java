@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class ViewModelFindUser extends ViewModel {
     private String username;
-    private Fragment fragment;
+    private final Fragment fragment;
     public ViewModelFindUser() {
        fragment = new FragmentAuth();
     }

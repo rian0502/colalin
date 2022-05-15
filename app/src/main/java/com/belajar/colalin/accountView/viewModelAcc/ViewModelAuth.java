@@ -24,7 +24,6 @@ public class ViewModelAuth extends ViewModel {
     private String username;
     @SuppressLint("StaticFieldLeak")
     private FragmentActivity context;
-    private String code;
     private String vertifID;
     private final Fragment fragment;
 
@@ -58,14 +57,6 @@ public class ViewModelAuth extends ViewModel {
         this.phone = phone;
     }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public void sendOTP(){
         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber("+62"+getPhone())
@@ -80,7 +71,7 @@ public class ViewModelAuth extends ViewModel {
                 @Override
                 public void onVerificationCompleted(@NonNull PhoneAuthCredential
                                                             phoneAuthCredential) {
-                    code = phoneAuthCredential.getSmsCode();
+                    String code = phoneAuthCredential.getSmsCode();
                     assert code != null;
                     if (code.equals("")){
                         vertifOTP(code);

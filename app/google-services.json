@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "316076633651-0qs7llsm3hneck3om3rsagkld94gvdvi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.belajar.colalin",
+            "certificate_hash": "9448ca002231dc4b02eaeee378941930bc5fb99c"
+          }
+        },
+        {
           "client_id": "316076633651-jvrtvioisnster8s1t2on6k6jb3am3al.apps.googleusercontent.com",
           "client_type": 3
         }
