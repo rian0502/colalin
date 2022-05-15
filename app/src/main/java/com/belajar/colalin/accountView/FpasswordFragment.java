@@ -1,6 +1,9 @@
 package com.belajar.colalin.accountView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -10,22 +13,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.viewModelAcc.ViewModelFindUser;
 import com.belajar.colalin.databinding.FragmentFpasswordBinding;
-import com.google.firebase.FirebaseException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
-import com.google.firebase.auth.PhoneAuthProvider;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Objects;
 
 
 public class FpasswordFragment extends Fragment {
@@ -63,7 +55,7 @@ public class FpasswordFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
         binding.buttonNext.setOnClickListener(view1 -> {
-            if (binding.inputUsernameForgot.getText().toString().isEmpty()) {
+            if (Objects.requireNonNull(binding.inputUsernameForgot.getText()).toString().isEmpty()) {
                 binding.inputUsernameForgot.setError("Username Harus di isi");
             } else {
                 viewModelFindUser
@@ -73,8 +65,6 @@ public class FpasswordFragment extends Fragment {
                         getActivity());
             }
         });
-
-
     }
 
 

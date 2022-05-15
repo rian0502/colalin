@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 import com.belajar.colalin.MainActivity;
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.RegisterAccount;
+import com.belajar.colalin.homeView.Models.RegisterAccount;
 import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;

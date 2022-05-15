@@ -18,7 +18,7 @@ import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.Sessions.SessionManagement;
 import com.belajar.colalin.accountView.Sessions.UserLogged;
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.LoginAuth;
+import com.belajar.colalin.homeView.Models.LoginAuth;
 import com.belajar.colalin.databinding.FragmentLoginBinding;
 import com.belajar.colalin.homeView.HomeActivity;
 
@@ -85,7 +85,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void login(String id) {
-        String username = binding.inputUsername.getText().toString().trim();
+        String username = Objects.requireNonNull(binding.inputUsername.getText()).toString().trim();
         UserLogged user = new UserLogged(username, Integer.parseInt(id));
         SessionManagement sessionManagement = new SessionManagement(getActivity());
         sessionManagement.saveSession(user);

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.Models.ListCounter;
+import com.belajar.colalin.homeView.Models.ListCounter;
 import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;

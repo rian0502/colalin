@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.StatusRespons;
+import com.belajar.colalin.homeView.Models.StatusRespons;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

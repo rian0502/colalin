@@ -1,14 +1,12 @@
 package com.belajar.colalin.homeView.infoData;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityDataInfoBinding;
-import com.belajar.colalin.homeView.Models.ModelData;
 
 public class DataInfoActivity extends AppCompatActivity {
     private Bundle bundle;
@@ -20,6 +18,9 @@ public class DataInfoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         bundle = getIntent().getExtras();
         changeFragmentInfoData();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_data_counter, new FragmentPie()).commit();
     }
 
     private void changeFragmentInfoData() {

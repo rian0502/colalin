@@ -1,6 +1,5 @@
 package com.belajar.colalin.homeView.viewModel;
 
-import android.content.Context;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -8,14 +7,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.RegisterAccount;
-import com.belajar.colalin.apiService.StatusRespons;
+import com.belajar.colalin.homeView.Models.StatusRespons;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;

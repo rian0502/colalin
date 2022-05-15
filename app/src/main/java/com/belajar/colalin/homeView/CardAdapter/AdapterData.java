@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.belajar.colalin.apiService.Models.ListCounter;
+import com.belajar.colalin.homeView.Models.ListCounter;
 import com.belajar.colalin.databinding.ItemCounterBinding;
-import com.belajar.colalin.homeView.Models.ModelData;
 import com.belajar.colalin.homeView.infoData.DataInfoActivity;
 import com.bumptech.glide.Glide;
 

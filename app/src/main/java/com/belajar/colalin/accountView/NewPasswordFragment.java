@@ -49,7 +49,6 @@ public class NewPasswordFragment extends Fragment {
             return true;
         }
     }
-
     void chekSamePassword(){
         if (etIsEmpty()){
             if (Objects.requireNonNull(binding.inputNewPassword.getText()).toString().trim()

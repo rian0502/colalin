@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,7 +41,7 @@ public class FragmentAuth extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModelAuth.sendOTP();
         binding.buttonVertivikasi.setOnClickListener(view1 -> {
-            if (binding.inputOtp.getText().toString().trim().isEmpty()){
+            if (Objects.requireNonNull(binding.inputOtp.getText()).toString().trim().isEmpty()){
                 binding.inputOtp.setError("OTP harus di isi");
             }else {
                 viewModelAuth.vertifOTP(Objects.requireNonNull(binding.inputOtp.getText())

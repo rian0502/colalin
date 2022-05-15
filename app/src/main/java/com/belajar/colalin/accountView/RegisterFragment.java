@@ -18,6 +18,8 @@ import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.viewModelAcc.ViewModelRegister;
 import com.belajar.colalin.databinding.FragmentRegisterBinding;
 
+import java.util.Objects;
+
 public class RegisterFragment extends Fragment {
     private FragmentRegisterBinding binding;
     private NavController navController;
@@ -46,12 +48,12 @@ public class RegisterFragment extends Fragment {
                     if (cekField(binding.inputUsernameRegister,
                             binding.inputPasswordRegister,
                             binding.inputPhoneRegister)) {
-                        modelRegister.setPassword(binding.inputPasswordRegister
-                                .getText().toString().trim());
-                        modelRegister.setPhone(binding.inputPhoneRegister
-                                .getText().toString().trim());
-                        modelRegister.setUsername(binding.inputUsernameRegister
-                                .getText().toString().trim());
+                        modelRegister.setPassword(Objects.requireNonNull(binding.inputPasswordRegister
+                                .getText()).toString().trim());
+                        modelRegister.setPhone(Objects.requireNonNull(binding.inputPhoneRegister
+                                .getText()).toString().trim());
+                        modelRegister.setUsername(Objects.requireNonNull(binding.inputUsernameRegister
+                                .getText()).toString().trim());
                         binding.buttonRegister.setClickable(false);
                         binding.buttonRegister.setText("");
                         binding.progressRegister.setVisibility(View.VISIBLE);

@@ -1,97 +1,45 @@
 package com.belajar.colalin.homeView.Models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Kendaraan implements Parcelable {
-
-    @SerializedName("gol_1")
+public class OneWay {
+    @SerializedName("gol1")
     @Expose
     private String gol1;
-    @SerializedName("gol_2")
+    @SerializedName("gol2")
     @Expose
     private String gol2;
-    @SerializedName("gol_3")
+    @SerializedName("gol3")
     @Expose
     private String gol3;
-    @SerializedName("gol_4")
+    @SerializedName("gol4")
     @Expose
     private String gol4;
-    @SerializedName("gol_5a")
+    @SerializedName("gol5a")
     @Expose
     private String gol5a;
-    @SerializedName("gol_5b")
+    @SerializedName("gol5b")
     @Expose
     private String gol5b;
-    @SerializedName("gol_6a")
+    @SerializedName("gol6a")
     @Expose
     private String gol6a;
-    @SerializedName("gol_6b")
+    @SerializedName("gol6b")
     @Expose
     private String gol6b;
-    @SerializedName("gol_7a")
+    @SerializedName("gol7a")
     @Expose
     private String gol7a;
-    @SerializedName("gol_7b")
+    @SerializedName("gol7b")
     @Expose
     private String gol7b;
-    @SerializedName("gol_7c")
+    @SerializedName("gol7c")
     @Expose
     private String gol7c;
-    @SerializedName("gol_8")
+    @SerializedName("gol8")
     @Expose
     private String gol8;
-
-    protected Kendaraan(Parcel in) {
-        gol1 = in.readString();
-        gol2 = in.readString();
-        gol3 = in.readString();
-        gol4 = in.readString();
-        gol5a = in.readString();
-        gol5b = in.readString();
-        gol6a = in.readString();
-        gol6b = in.readString();
-        gol7a = in.readString();
-        gol7b = in.readString();
-        gol7c = in.readString();
-        gol8 = in.readString();
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(gol1);
-        dest.writeString(gol2);
-        dest.writeString(gol3);
-        dest.writeString(gol4);
-        dest.writeString(gol5a);
-        dest.writeString(gol5b);
-        dest.writeString(gol6a);
-        dest.writeString(gol6b);
-        dest.writeString(gol7a);
-        dest.writeString(gol7b);
-        dest.writeString(gol7c);
-        dest.writeString(gol8);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator< Kendaraan > CREATOR = new Creator< Kendaraan >() {
-        @Override
-        public Kendaraan createFromParcel(Parcel in) {
-            return new Kendaraan(in);
-        }
-
-        @Override
-        public Kendaraan[] newArray(int size) {
-            return new Kendaraan[size];
-        }
-    };
 
     public String getGol1() {
         return gol1;
@@ -188,5 +136,4 @@ public class Kendaraan implements Parcelable {
     public void setGol8(String gol8) {
         this.gol8 = gol8;
     }
-
 }

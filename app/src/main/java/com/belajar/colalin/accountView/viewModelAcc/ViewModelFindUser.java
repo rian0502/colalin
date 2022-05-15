@@ -14,10 +14,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.FragmentAuth;
-import com.belajar.colalin.accountView.LoginFragment;
 import com.belajar.colalin.apiService.ApiClient;
-import com.belajar.colalin.apiService.RegisterAccount;
-import com.belajar.colalin.apiService.UserPhone;
+import com.belajar.colalin.homeView.Models.UserPhone;
 
 import java.util.ArrayList;
 
