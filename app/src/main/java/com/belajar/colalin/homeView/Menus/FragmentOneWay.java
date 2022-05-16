@@ -59,8 +59,6 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
                                     dialogInterface.cancel()).setView(lokasi)
                             .setOnDismissListener(dialogInterface ->
                                     ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
-                    counter.resetValue();
-                    bindingTvViewModel();
                     return true;
                 case R.id.nav_clear:
                     counter.resetValue();
