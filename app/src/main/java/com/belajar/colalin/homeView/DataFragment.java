@@ -41,15 +41,16 @@ public class DataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        assert this.getArguments() != null;
         adapter = new AdapterData(getContext(), this.getArguments().getString("id"));
         binding.containerDataFragment.setAdapter(adapter);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModelData.setModelData(this.getArguments().getString("id"));
-        viewModelData.getModelData().observe(getActivity(),  dataObserver);
+        viewModelData.getModelData().observe(getActivity(), dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 
-    private Observer< ArrayList< ListCounter > > dataObserver = new Observer< ArrayList< ListCounter > >() {
+    private final Observer< ArrayList< ListCounter > > dataObserver = new Observer< ArrayList< ListCounter > >() {
         @Override
         public void onChanged(ArrayList< ListCounter > modelData) {
             adapter.updateData(modelData);
