@@ -45,7 +45,6 @@ public class ViewModelAuth extends ViewModel {
 
     public ViewModelAuth() {
         mAuth = FirebaseAuth.getInstance();
-        mAuth.getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
         fragment = new NewPasswordFragment();
     }
 

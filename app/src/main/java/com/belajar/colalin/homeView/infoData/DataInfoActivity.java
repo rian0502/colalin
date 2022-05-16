@@ -18,9 +18,6 @@ public class DataInfoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         bundle = getIntent().getExtras();
         changeFragmentInfoData();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container_data_counter, new FragmentPie()).commit();
     }
 
     private void changeFragmentInfoData() {

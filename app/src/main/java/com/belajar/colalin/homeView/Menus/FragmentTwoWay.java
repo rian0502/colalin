@@ -168,7 +168,7 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         }else if (view.getId() == R.id.miror_btn_gol1){
             modelTwoWay.setMgol_1(modelTwoWay.getMgol_1()+1);
         }else if (view.getId() == R.id.miror_btn_gol2){
-            modelTwoWay.setMgol_2(modelTwoWay.getGol_2()+1);
+            modelTwoWay.setMgol_2(modelTwoWay.getMgol_2()+1);
         }else if (view.getId() == R.id.miror_btn_gol3){
             modelTwoWay.setMgol_3(modelTwoWay.getMgol_3()+1);
         }else if (view.getId() == R.id.miror_btn_gol4){
@@ -180,7 +180,7 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         }else if (view.getId() == R.id.miror_btn_gol6a){
             modelTwoWay.setMgol_6a(modelTwoWay.getMgol_6a()+1);
         }else if (view.getId() == R.id.miror_btn_gol6b){
-            modelTwoWay.setMgol_6b(modelTwoWay.getGol_6b()+1);
+            modelTwoWay.setMgol_6b(modelTwoWay.getMgol_6b()+1);
         }else if (view.getId() == R.id.miror_btn_gol7a){
             modelTwoWay.setMol_7a(modelTwoWay.getMol_7a()+1);
         }else if (view.getId() == R.id.miror_btn_gol7b){
