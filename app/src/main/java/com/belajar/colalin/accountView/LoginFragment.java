@@ -70,11 +70,11 @@ public class LoginFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        SessionManagement sessionManagement = new SessionManagement(getActivity());
+        SessionManagement sessionManagement = new SessionManagement(requireActivity());
         sessionManagement.getSession();
         String isUserLogged = sessionManagement.getSession();
         if (!isUserLogged.equals("null")) {
-            Intent intent = new Intent(getActivity(), HomeActivity.class);
+            Intent intent = new Intent(requireActivity(), HomeActivity.class);
             intent.putExtra("username", isUserLogged);
             intent.putExtra("id", String.valueOf(sessionManagement.getIdSession()));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
@@ -87,9 +87,9 @@ public class LoginFragment extends Fragment {
     private void login(String id) {
         String username = Objects.requireNonNull(binding.inputUsername.getText()).toString().trim();
         UserLogged user = new UserLogged(username, Integer.parseInt(id));
-        SessionManagement sessionManagement = new SessionManagement(getActivity());
+        SessionManagement sessionManagement = new SessionManagement(requireActivity());
         sessionManagement.saveSession(user);
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        Intent intent = new Intent(requireActivity(), HomeActivity.class);
         intent.putExtra("username", username);
         intent.putExtra("id", id);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
@@ -97,7 +97,7 @@ public class LoginFragment extends Fragment {
                 Intent.FLAG_ACTIVITY_CLEAR_TOP
         );
         startActivity(intent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 
     private boolean validateFrom() {

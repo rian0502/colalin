@@ -25,7 +25,7 @@ public class FragmentDataToll extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentDataTollBinding.inflate(inflater, container, false);
-        viewModelDataToll = new ViewModelProvider(getActivity()).get(ViewModelDataToll.class);
+        viewModelDataToll = new ViewModelProvider(requireActivity()).get(ViewModelDataToll.class);
         assert this.getArguments() != null;
         int id = Integer.parseInt(this.getArguments().getString("id_akun"));
         int counter = Integer.parseInt(this.getArguments().getString("id"));
@@ -36,7 +36,7 @@ public class FragmentDataToll extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModelDataToll.getData().observe(getActivity(), listCounters -> {
+        viewModelDataToll.getData().observe(requireActivity(), listCounters -> {
             binding.lokasiPerhitungan.setText(listCounters.get(0).getLokasi());
             binding.waktuPerhitungan.setText(listCounters.get(0).getTanggal());
             binding.jamMulai.setText(listCounters.get(0).getMulai());

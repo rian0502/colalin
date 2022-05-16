@@ -37,24 +37,24 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.buttonLogout.setOnClickListener(view1 -> {
-            SessionManagement sessionManagement = new SessionManagement(getActivity());
+            SessionManagement sessionManagement = new SessionManagement(requireActivity());
             sessionManagement.removeSession();
-            Intent intent = new Intent(getActivity(), MainActivity.class);
+            Intent intent = new Intent(requireActivity(), MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                     Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            getActivity().finish();
+            requireActivity().finish();
         });
 
         binding.menuInfo.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+            Intent intent = new Intent(requireActivity(), ProfileActivity.class);
             intent.putExtra("menu", 0);
             startActivity(intent);
         });
 
         binding.menuAbout.setOnClickListener(view1 -> {
-            Intent intent = new Intent(getActivity(), ProfileActivity.class);
+            Intent intent = new Intent(requireActivity(), ProfileActivity.class);
             intent.putExtra("menu", 1);
             startActivity(intent);
         });

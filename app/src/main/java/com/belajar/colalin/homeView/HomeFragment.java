@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private  ArrayList< ListMenu > menus = new ArrayList<>();
+    private final ArrayList< ListMenu > menus;
 
     public HomeFragment() {
         ListData.getData().clear();
@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         FragmentHomeBinding binding =
                 FragmentHomeBinding.inflate(inflater, container, false);
 
+        assert this.getArguments() != null;
         Adapter adapter = new Adapter(menus, getContext(), this.getArguments().getString("id"));
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);

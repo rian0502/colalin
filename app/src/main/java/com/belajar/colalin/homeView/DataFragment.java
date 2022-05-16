@@ -46,7 +46,7 @@ public class DataFragment extends Fragment {
         binding.containerDataFragment.setAdapter(adapter);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModelData.setModelData(this.getArguments().getString("id"));
-        viewModelData.getModelData().observe(getActivity(), dataObserver);
+        viewModelData.getModelData().observe(requireActivity(), dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 

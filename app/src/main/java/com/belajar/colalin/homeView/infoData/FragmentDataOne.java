@@ -36,7 +36,7 @@ public class FragmentDataOne extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModelDataOne.getData().observe(getActivity(), listCounters -> {
+        viewModelDataOne.getData().observe(requireActivity(), listCounters -> {
             binding.lokasiPerhitungan.setText(listCounters.get(0).getLokasi());
             binding.waktuPerhitungan.setText(listCounters.get(0).getTanggal());
             binding.jamMulai.setText(listCounters.get(0).getMulai());
@@ -55,5 +55,4 @@ public class FragmentDataOne extends Fragment {
             binding.golongan8.setText(listCounters.get(0).getOneWay().getGol8());
         });
     }
-
 }

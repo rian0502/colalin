@@ -27,7 +27,7 @@ public class FragmentDataTwo extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentDataTwoBinding.inflate(inflater, container, false);
-        viewModelDataTwo = new ViewModelProvider(getActivity()).get(ViewModelDataTwo.class);
+        viewModelDataTwo = new ViewModelProvider(requireActivity()).get(ViewModelDataTwo.class);
         assert this.getArguments() != null;
         int id = Integer.parseInt(this.getArguments().getString("id_akun"));
         int counter = Integer.parseInt(this.getArguments().getString("id"));
@@ -38,7 +38,7 @@ public class FragmentDataTwo extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModelDataTwo.getData().observe(getActivity(), listCounters -> {
+        viewModelDataTwo.getData().observe(requireActivity()    , listCounters -> {
             binding.lokasiPerhitungan.setText(listCounters.get(0).getLokasi());
             binding.waktuPerhitungan.setText(listCounters.get(0).getTanggal());
             binding.jamMulai.setText(listCounters.get(0).getMulai());
