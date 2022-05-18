@@ -4,14 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SessionManagement {
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-    private String SHAREDPREFNAME = "session";
-    private String USERNAMEKEY = "usernameKEY";
-    private String IDKEY = "ID";
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
+    private final String USERNAMEKEY = "usernameKEY";
+    private final String IDKEY = "ID";
 
     public SessionManagement(Context context) {
-        this.sharedPreferences = context.getSharedPreferences(SHAREDPREFNAME, Context.MODE_PRIVATE);
+        this.sharedPreferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);
         this.editor = sharedPreferences.edit();
     }
 

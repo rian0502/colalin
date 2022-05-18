@@ -1,5 +1,7 @@
 package com.belajar.colalin.homeView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +22,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private final ArrayList< ListMenu > menus;
-
+    private SharedPreferences preferences;
     public HomeFragment() {
         ListData.getData().clear();
         ListData.addData();
@@ -29,6 +31,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferences = requireActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -39,7 +42,7 @@ public class HomeFragment extends Fragment {
                 FragmentHomeBinding.inflate(inflater, container, false);
 
         assert this.getArguments() != null;
-        Adapter adapter = new Adapter(menus, getContext(), this.getArguments().getString("id"));
+        Adapter adapter = new Adapter(menus, getContext(), preferences.getString("ID",""));
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);
         binding.containerViewHome.setLayoutManager(new LinearLayoutManager(getActivity()));

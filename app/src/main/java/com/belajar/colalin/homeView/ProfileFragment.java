@@ -1,6 +1,8 @@
 package com.belajar.colalin.homeView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,19 +19,25 @@ import com.belajar.colalin.homeView.profileMenu.ProfileActivity;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding binding;
-
+    private SharedPreferences sharedPreferences;
     public ProfileFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPreferences = requireActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         binding = FragmentProfileBinding.inflate(inflater, container, false);
-        assert this.getArguments() != null;
-        binding.tvUsernameView.setText(this.getArguments().getString("username"));
+
+        binding.tvUsernameView.setText(sharedPreferences.getString("usernameKEY",""));
         return binding.getRoot();
     }
 

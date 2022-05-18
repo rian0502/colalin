@@ -75,8 +75,6 @@ public class LoginFragment extends Fragment {
         String isUserLogged = sessionManagement.getSession();
         if (!isUserLogged.equals("null")) {
             Intent intent = new Intent(requireActivity(), HomeActivity.class);
-            intent.putExtra("username", isUserLogged);
-            intent.putExtra("id", String.valueOf(sessionManagement.getIdSession()));
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                     Intent.FLAG_ACTIVITY_NEW_TASK |
                     Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -90,8 +88,6 @@ public class LoginFragment extends Fragment {
         SessionManagement sessionManagement = new SessionManagement(requireActivity());
         sessionManagement.saveSession(user);
         Intent intent = new Intent(requireActivity(), HomeActivity.class);
-        intent.putExtra("username", username);
-        intent.putExtra("id", id);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
                 Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_CLEAR_TOP

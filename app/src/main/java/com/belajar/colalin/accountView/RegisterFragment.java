@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,7 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-
 import com.belajar.colalin.R;
 import com.belajar.colalin.accountView.viewModelAcc.ViewModelRegister;
 import com.belajar.colalin.databinding.FragmentRegisterBinding;
@@ -26,7 +24,6 @@ public class RegisterFragment extends Fragment {
     private ViewModelRegister modelRegister;
 
     public RegisterFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -57,8 +54,7 @@ public class RegisterFragment extends Fragment {
                         binding.buttonRegister.setClickable(false);
                         binding.buttonRegister.setText("");
                         binding.progressRegister.setVisibility(View.VISIBLE);
-                        modelRegister.
-                                checkUsername(binding.buttonRegister, binding.progressRegister);
+                        modelRegister.checkUsername(binding.buttonRegister, binding.progressRegister);
                     }
                 });
     }
@@ -86,6 +82,8 @@ public class RegisterFragment extends Fragment {
                 navController.navigate(R.id.action_registerFragment_to_loginFragment);
             }
         };
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+        requireActivity()
+                .getOnBackPressedDispatcher()
+                .addCallback(this, callback);
     }
 }
