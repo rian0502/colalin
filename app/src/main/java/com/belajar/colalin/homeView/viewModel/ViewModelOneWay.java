@@ -22,9 +22,9 @@ public class ViewModelOneWay extends ViewModel {
     private int gol_1, gol_2, gol_3, gol_4, gol_5a, gol_5b,
             gol_6a, gol_6b, gol_7a, gol_7b, gol_7c, gol_8;
 
-    private String start;
+    private final String start;
     private String end;
-    private String date;
+    private final String date;
 
     public ViewModelOneWay() {
         this.start = DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now());
@@ -33,10 +33,6 @@ public class ViewModelOneWay extends ViewModel {
 
     public String getStart() {
         return start;
-    }
-
-    public void setStart(String start) {
-        this.start = start;
     }
 
     public String getEnd() {
@@ -49,10 +45,6 @@ public class ViewModelOneWay extends ViewModel {
 
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public void addGol_1() {
@@ -177,6 +169,7 @@ public class ViewModelOneWay extends ViewModel {
             public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
                                    @NonNull Response< ArrayList< StatusRespons > > response) {
                 if (response.isSuccessful()){
+                    assert response.body() != null;
                     if (response.body().get(0).getStatus().equals("sukses")){
                         Toast.makeText(context, "Data Berhasil di simpan",
                                 Toast.LENGTH_SHORT).show();

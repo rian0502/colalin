@@ -40,8 +40,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentHomeBinding binding =
                 FragmentHomeBinding.inflate(inflater, container, false);
-
-        assert this.getArguments() != null;
         Adapter adapter = new Adapter(menus, getContext(), preferences.getString("ID",""));
         binding.containerViewHome.setHasFixedSize(true);
         binding.containerViewHome.setAdapter(adapter);

@@ -65,7 +65,7 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                                 assert getArguments() != null;
                                 viewmodel.saveData(lokasi.getText().toString().trim(),
                                         Integer.parseInt(getArguments().getString("id")),
-                                        getActivity());
+                                        requireActivity());
                             }).setNegativeButton("No", (dialogInterface, i) ->
                                     dialogInterface.cancel()).setView(lokasi)
                             .setOnDismissListener(dialogInterface ->

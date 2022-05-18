@@ -1,5 +1,7 @@
 package com.belajar.colalin.homeView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +26,15 @@ public class DataFragment extends Fragment {
     private FragmentDataBinding binding;
     private ViewModelData viewModelData;
     private AdapterData adapter;
-
+    private SharedPreferences sharedPreferences;
     public DataFragment() {
 
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        sharedPreferences = requireActivity().getSharedPreferences("session", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -41,11 +49,10 @@ public class DataFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        assert this.getArguments() != null;
-        adapter = new AdapterData(getContext(), this.getArguments().getString("id"));
+        adapter = new AdapterData(getContext(), sharedPreferences.getString("ID",""));
         binding.containerDataFragment.setAdapter(adapter);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getContext()));
-        viewModelData.setModelData(this.getArguments().getString("id"));
+        viewModelData.setModelData(sharedPreferences.getString("ID",""));
         viewModelData.getModelData().observe(requireActivity(), dataObserver);
         binding.containerDataFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
