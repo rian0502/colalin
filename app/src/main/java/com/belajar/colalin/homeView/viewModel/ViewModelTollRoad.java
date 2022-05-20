@@ -159,6 +159,7 @@ public class ViewModelTollRoad extends ViewModel {
                     if (response.body().get(0).getStatus().equals("sukses")){
                         Toast.makeText(context, "Data Berhasil di simpan",
                                 Toast.LENGTH_SHORT).show();
+                        context.finish();
                     }else {
                         Toast.makeText(context,"Data gagal disimpan",Toast.LENGTH_SHORT).show();
                     }

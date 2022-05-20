@@ -7,26 +7,31 @@ import androidx.lifecycle.ViewModel;
 
 import com.belajar.colalin.apiService.ApiClient;
 import com.belajar.colalin.homeView.Models.ListCounter;
+
 import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ViewModelDataTwo extends ViewModel {
-    private MutableLiveData< ArrayList< ListCounter > > listCounters;
-    public ViewModelDataTwo(){
+    private final MutableLiveData< ArrayList< ListCounter > > listCounters;
+
+    public ViewModelDataTwo() {
         listCounters = new MutableLiveData<>();
     }
-    public void setData(int id, int counter){
-        Call< ArrayList< ListCounter >> listCall = ApiClient.getService().getDetail(id, counter);
+
+    public void setData(int id, int counter) {
+        Call< ArrayList< ListCounter > > listCall = ApiClient.getService().getDetail(id, counter);
         listCall.enqueue(new Callback< ArrayList< ListCounter > >() {
             @Override
             public void onResponse(@NonNull Call< ArrayList< ListCounter > > call,
                                    @NonNull Response< ArrayList< ListCounter > > response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     listCounters.setValue(response.body());
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call< ArrayList< ListCounter > > call,
                                   @NonNull Throwable t) {
@@ -34,7 +39,8 @@ public class ViewModelDataTwo extends ViewModel {
             }
         });
     }
-    public LiveData<ArrayList<ListCounter>> getData(){
+
+    public LiveData< ArrayList< ListCounter > > getData() {
         return this.listCounters;
     }
 }

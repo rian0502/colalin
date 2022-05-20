@@ -25,9 +25,9 @@ public class ViewModelTwoWay extends ViewModel {
     private int mgol_1, mgol_2, mgol_3, mgol_4, mgol_5a, mgol_5b,
             mgol_6a, mgol_6b, mol_7a, mgol_7b, mgol_7c, mgol_8;
 
-    private String start;
+    private final String start;
     private String end;
-    private String date;
+    private final String date;
 
     public ViewModelTwoWay() {
         this.start = DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now());
@@ -36,10 +36,6 @@ public class ViewModelTwoWay extends ViewModel {
 
     public String getStart() {
         return start;
-    }
-
-    public void setStart(String start) {
-        this.start = start;
     }
 
     public String getEnd() {
@@ -52,10 +48,6 @@ public class ViewModelTwoWay extends ViewModel {
 
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public int getGol_1() {
@@ -287,9 +279,11 @@ public class ViewModelTwoWay extends ViewModel {
             @Override
             public void onResponse(@NonNull Call< ArrayList< StatusRespons > > call,
                                    @NonNull Response< ArrayList< StatusRespons > > response) {
+                assert response.body() != null;
                 if (response.body().get(0).getStatus().equals("sukses")) {
                     Toast.makeText(context, "Data Berhasil di simpan",
                             Toast.LENGTH_SHORT).show();
+                    context.finish();
                 } else {
                     Toast.makeText(context, "Data gagal disimpan", Toast.LENGTH_SHORT).show();
                 }
