@@ -1,15 +1,16 @@
 package com.belajar.colalin.homeView.Menus;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -45,6 +46,7 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
     }
 
 
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -57,19 +59,28 @@ public class FragmentJalanTol extends Fragment implements View.OnClickListener {
                     bindingTvViewModel();
                     return true;
                 case R.id.nav_save:
-                    viewmodel.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Lokasi")
-                            .setMessage("Masukkan lokasi anda saat ini !")
-                            .setPositiveButton("Yes", (dialogInterface, i) -> {
-                                assert getArguments() != null;
-                                viewmodel.saveData(lokasi.getText().toString().trim(),
-                                        Integer.parseInt(getArguments().getString("id")),
-                                        requireActivity());
-                            }).setNegativeButton("No", (dialogInterface, i) ->
-                                    dialogInterface.cancel()).setView(lokasi)
-                            .setOnDismissListener(dialogInterface ->
-                                    ((ViewGroup) lokasi.getParent()).removeView(lokasi)).show();
+                    if (viewmodel.getGol2() == 0 && viewmodel.getGol3() == 0 && viewmodel.getGol4()
+                            == 0 && viewmodel.getGol5a() == 0 && viewmodel.getGol5b() == 0 &&
+                            viewmodel.getGol6a() == 0 && viewmodel.getGol6b() == 0 &&
+                            viewmodel.getGol7a() == 0 && viewmodel.getGol7b() == 0 &&
+                            viewmodel.getGol7c() ==0){
+                        Toast.makeText(getContext(),
+                                "Tidak dapat menyimpan data yang kosong", Toast.LENGTH_LONG).show();
+                    }else{
+                        viewmodel.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
+                        new AlertDialog.Builder(requireActivity())
+                                .setTitle("Lokasi")
+                                .setMessage("Masukkan lokasi anda saat ini !")
+                                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                                    assert getArguments() != null;
+                                    viewmodel.saveData(lokasi.getText().toString().trim(),
+                                            Integer.parseInt(getArguments().getString("id")),
+                                            requireActivity());
+                                }).setNegativeButton("No", (dialogInterface, i) ->
+                                        dialogInterface.cancel()).setView(lokasi)
+                                .setOnDismissListener(dialogInterface ->
+                                        ((ViewGroup) lokasi.getParent()).removeView(lokasi)).show();
+                    }
                     return true;
             }
             return false;

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
     public FragmentOneWay() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -46,19 +48,27 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_save:
-                    counter.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Lokasi")
-                            .setMessage("Masukkan lokasi anda saat ini !")
-                            .setPositiveButton("Yes", (dialogInterface, i) -> {
-                                assert getArguments() != null;
-                                counter.saveData(lokasi.getText().toString().trim(),
-                                        Integer.parseInt(getArguments().getString("id")),
-                                        getActivity());
-                            }).setNegativeButton("No", (dialogInterface, i) ->
-                                    dialogInterface.cancel()).setView(lokasi)
-                            .setOnDismissListener(dialogInterface ->
-                                    ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
+                    if (counter.getGol_1() == 0 && counter.getGol_2() == 0 && counter.getGol_3() == 0
+                            && counter.getGol_4() == 0 && counter.getGol_5a() == 0 && counter.getGol_5b() == 0
+                            && counter.getGol_6a() == 0 && counter.getGol_6b() == 0 && counter.getGol_7a() == 0
+                            && counter.getGol_7b() == 0 && counter.getGol_7c() == 0 && counter.getGol_8() == 0) {
+                        Toast.makeText(getContext(),
+                                "Tidak dapat menyimpan data yang kosong", Toast.LENGTH_LONG).show();
+                    } else {
+                        counter.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Lokasi")
+                                .setMessage("Masukkan lokasi anda saat ini !")
+                                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                                    assert getArguments() != null;
+                                    counter.saveData(lokasi.getText().toString().trim(),
+                                            Integer.parseInt(getArguments().getString("id")),
+                                            getActivity());
+                                }).setNegativeButton("No", (dialogInterface, i) ->
+                                        dialogInterface.cancel()).setView(lokasi)
+                                .setOnDismissListener(dialogInterface ->
+                                        ((ViewGroup) lokasi.getParent()).removeView(lokasi)).show();
+                    }
                     return true;
                 case R.id.nav_clear:
                     counter.resetValue();
@@ -68,6 +78,7 @@ public class FragmentOneWay extends Fragment implements View.OnClickListener {
             return false;
         });
     }
+
     @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View view) {

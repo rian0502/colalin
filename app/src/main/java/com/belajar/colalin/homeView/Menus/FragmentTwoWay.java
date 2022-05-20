@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +34,7 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
@@ -58,19 +59,32 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         binding.menubar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.nav_save:
-                    modelTwoWay.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Lokasi")
-                            .setMessage("Masukkan lokasi anda saat ini !")
-                            .setPositiveButton("Yes", (dialogInterface, i) -> {
-                                assert getArguments() != null;
-                                modelTwoWay.saveData(lokasi.getText().toString().trim(),
-                                        Integer.parseInt(getArguments().getString("id")),
-                                        getActivity());
-                            }).setNegativeButton("No", (dialogInterface, i) ->
-                                    dialogInterface.cancel()).setView(lokasi)
-                            .setOnDismissListener(dialogInterface ->
-                                    ((ViewGroup)lokasi.getParent()).removeView(lokasi)).show();
+                    if (modelTwoWay.getGol_1() == 0 && modelTwoWay.getGol_2() == 0 && modelTwoWay.getGol_3() == 0
+                            && modelTwoWay.getGol_4() == 0 && modelTwoWay.getGol_5a() == 0 && modelTwoWay.getGol_5b() == 0
+                            && modelTwoWay.getGol_6a() == 0 && modelTwoWay.getGol_6b() == 0 && modelTwoWay.getGol_7a() == 0
+                            && modelTwoWay.getGol_7b() == 0 && modelTwoWay.getGol_7c() == 0 && modelTwoWay.getGol_8() == 0 &&
+
+                            modelTwoWay.getMgol_1() == 0 && modelTwoWay.getMgol_2() == 0 && modelTwoWay.getMgol_3() == 0
+                            && modelTwoWay.getMgol_4() == 0 && modelTwoWay.getMgol_5a() == 0 && modelTwoWay.getMgol_5b() == 0
+                            && modelTwoWay.getMgol_6a() == 0 && modelTwoWay.getMgol_6b() == 0 && modelTwoWay.getMol_7a() == 0
+                            && modelTwoWay.getMgol_7b() == 0 && modelTwoWay.getMgol_7c() == 0 && modelTwoWay.getMgol_8() == 0) {
+                        Toast.makeText(getContext(),
+                                "Tidak dapat menyimpan data yang kosong", Toast.LENGTH_LONG).show();
+                    } else {
+                        modelTwoWay.setEnd(DateTimeFormatter.ofPattern("HH:mm").format(LocalDateTime.now()));
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Lokasi")
+                                .setMessage("Masukkan lokasi anda saat ini !")
+                                .setPositiveButton("Yes", (dialogInterface, i) -> {
+                                    assert getArguments() != null;
+                                    modelTwoWay.saveData(lokasi.getText().toString().trim(),
+                                            Integer.parseInt(getArguments().getString("id")),
+                                            getActivity());
+                                }).setNegativeButton("No", (dialogInterface, i) ->
+                                        dialogInterface.cancel()).setView(lokasi)
+                                .setOnDismissListener(dialogInterface ->
+                                        ((ViewGroup) lokasi.getParent()).removeView(lokasi)).show();
+                    }
                     return true;
                 case R.id.nav_clear:
                     modelTwoWay.clearData();
@@ -82,7 +96,7 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         });
     }
 
-    public void bindingTv(){
+    public void bindingTv() {
         binding.gol1.setText(String.valueOf(modelTwoWay.getGol_1()));
         binding.gol2.setText(String.valueOf(modelTwoWay.getGol_2()));
         binding.gol3.setText(String.valueOf(modelTwoWay.getGol_3()));
@@ -96,7 +110,8 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         binding.gol7C.setText(String.valueOf(modelTwoWay.getGol_7c()));
         binding.gol8.setText(String.valueOf(modelTwoWay.getGol_8()));
     }
-    public void bindingTvMiror(){
+
+    public void bindingTvMiror() {
         binding.mirorGol1.setText(String.valueOf(modelTwoWay.getMgol_1()));
         binding.mirorGol2.setText(String.valueOf(modelTwoWay.getMgol_2()));
         binding.mirorGol3.setText(String.valueOf(modelTwoWay.getMgol_3()));
@@ -110,7 +125,8 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         binding.mirorGol7c.setText(String.valueOf(modelTwoWay.getMgol_7c()));
         binding.mirorGol8.setText(String.valueOf(modelTwoWay.getMgol_8()));
     }
-    public void bindingButton(){
+
+    public void bindingButton() {
         binding.golonganSatu.setOnClickListener(this);
         binding.golonganDua.setOnClickListener(this);
         binding.golonganTiga.setOnClickListener(this);
@@ -124,7 +140,8 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
         binding.golongan7C.setOnClickListener(this);
         binding.golongan8.setOnClickListener(this);
     }
-    public void bindingButtonMiror(){
+
+    public void bindingButtonMiror() {
         binding.mirorBtnGol1.setOnClickListener(this);
         binding.mirorBtnGol2.setOnClickListener(this);
         binding.mirorBtnGol3.setOnClickListener(this);
@@ -143,52 +160,52 @@ public class FragmentTwoWay extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if (view.getId() == R.id.golongan_satu) {
             modelTwoWay.setGol_1(modelTwoWay.getGol_1() + 1);
-        }else if(view.getId() == R.id.golongan_dua){
+        } else if (view.getId() == R.id.golongan_dua) {
             modelTwoWay.setGol_2(modelTwoWay.getGol_2() + 1);
-        }else if (view.getId() == R.id.golongan_tiga){
-            modelTwoWay.setGol_3(modelTwoWay.getGol_3()+1);
-        }else if (view.getId() == R.id.golongan_empat){
-            modelTwoWay.setGol_4(modelTwoWay.getGol_4()+1);
-        }else if (view.getId() == R.id.golongan_5a){
-            modelTwoWay.setGol_5a(modelTwoWay.getGol_5a()+1);
-        }else if (view.getId() == R.id.golongan_5b){
-            modelTwoWay.setGol_5b(modelTwoWay.getGol_5b()+1);
-        }else if (view.getId() == R.id.golongan_6A){
-            modelTwoWay.setGol_6a(modelTwoWay.getGol_6a()+1);
-        }else if (view.getId() == R.id.golongan_6B){
-            modelTwoWay.setGol_6b(modelTwoWay.getGol_6b()+1);
-        }else if (view.getId() == R.id.golongan_7A){
-            modelTwoWay.setGol_7a(modelTwoWay.getGol_7a()+1);
-        }else if (view.getId() == R.id.golongan_7B){
-            modelTwoWay.setGol_7b(modelTwoWay.getGol_7b()+1);
-        }else if (view.getId() == R.id.golongan_7C){
-            modelTwoWay.setGol_7c(modelTwoWay.getGol_7c()+1);
-        }else if (view.getId() == R.id.golongan_8){
-            modelTwoWay.setGol_8(modelTwoWay.getGol_8()+1);
-        }else if (view.getId() == R.id.miror_btn_gol1){
-            modelTwoWay.setMgol_1(modelTwoWay.getMgol_1()+1);
-        }else if (view.getId() == R.id.miror_btn_gol2){
-            modelTwoWay.setMgol_2(modelTwoWay.getMgol_2()+1);
-        }else if (view.getId() == R.id.miror_btn_gol3){
-            modelTwoWay.setMgol_3(modelTwoWay.getMgol_3()+1);
-        }else if (view.getId() == R.id.miror_btn_gol4){
-            modelTwoWay.setMgol_4(modelTwoWay.getMgol_4()+1);
-        }else if (view.getId() == R.id.miror_btn_gol5a){
-            modelTwoWay.setMgol_5a(modelTwoWay.getMgol_5a()+1);
-        }else if (view.getId() == R.id.miror_btn_gol5b){
-            modelTwoWay.setMgol_5b(modelTwoWay.getMgol_5b()+1);
-        }else if (view.getId() == R.id.miror_btn_gol6a){
-            modelTwoWay.setMgol_6a(modelTwoWay.getMgol_6a()+1);
-        }else if (view.getId() == R.id.miror_btn_gol6b){
-            modelTwoWay.setMgol_6b(modelTwoWay.getMgol_6b()+1);
-        }else if (view.getId() == R.id.miror_btn_gol7a){
-            modelTwoWay.setMol_7a(modelTwoWay.getMol_7a()+1);
-        }else if (view.getId() == R.id.miror_btn_gol7b){
-            modelTwoWay.setMgol_7b(modelTwoWay.getMgol_7b()+1);
-        }else if (view.getId() == R.id.miror_btn_gol7c){
-            modelTwoWay.setMgol_7c(modelTwoWay.getMgol_7c()+1);
-        }else if (view.getId() == R.id.miror_btn_go8){
-            modelTwoWay.setMgol_8(modelTwoWay.getMgol_8()+1);
+        } else if (view.getId() == R.id.golongan_tiga) {
+            modelTwoWay.setGol_3(modelTwoWay.getGol_3() + 1);
+        } else if (view.getId() == R.id.golongan_empat) {
+            modelTwoWay.setGol_4(modelTwoWay.getGol_4() + 1);
+        } else if (view.getId() == R.id.golongan_5a) {
+            modelTwoWay.setGol_5a(modelTwoWay.getGol_5a() + 1);
+        } else if (view.getId() == R.id.golongan_5b) {
+            modelTwoWay.setGol_5b(modelTwoWay.getGol_5b() + 1);
+        } else if (view.getId() == R.id.golongan_6A) {
+            modelTwoWay.setGol_6a(modelTwoWay.getGol_6a() + 1);
+        } else if (view.getId() == R.id.golongan_6B) {
+            modelTwoWay.setGol_6b(modelTwoWay.getGol_6b() + 1);
+        } else if (view.getId() == R.id.golongan_7A) {
+            modelTwoWay.setGol_7a(modelTwoWay.getGol_7a() + 1);
+        } else if (view.getId() == R.id.golongan_7B) {
+            modelTwoWay.setGol_7b(modelTwoWay.getGol_7b() + 1);
+        } else if (view.getId() == R.id.golongan_7C) {
+            modelTwoWay.setGol_7c(modelTwoWay.getGol_7c() + 1);
+        } else if (view.getId() == R.id.golongan_8) {
+            modelTwoWay.setGol_8(modelTwoWay.getGol_8() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol1) {
+            modelTwoWay.setMgol_1(modelTwoWay.getMgol_1() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol2) {
+            modelTwoWay.setMgol_2(modelTwoWay.getMgol_2() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol3) {
+            modelTwoWay.setMgol_3(modelTwoWay.getMgol_3() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol4) {
+            modelTwoWay.setMgol_4(modelTwoWay.getMgol_4() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol5a) {
+            modelTwoWay.setMgol_5a(modelTwoWay.getMgol_5a() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol5b) {
+            modelTwoWay.setMgol_5b(modelTwoWay.getMgol_5b() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol6a) {
+            modelTwoWay.setMgol_6a(modelTwoWay.getMgol_6a() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol6b) {
+            modelTwoWay.setMgol_6b(modelTwoWay.getMgol_6b() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol7a) {
+            modelTwoWay.setMol_7a(modelTwoWay.getMol_7a() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol7b) {
+            modelTwoWay.setMgol_7b(modelTwoWay.getMgol_7b() + 1);
+        } else if (view.getId() == R.id.miror_btn_gol7c) {
+            modelTwoWay.setMgol_7c(modelTwoWay.getMgol_7c() + 1);
+        } else if (view.getId() == R.id.miror_btn_go8) {
+            modelTwoWay.setMgol_8(modelTwoWay.getMgol_8() + 1);
         }
         bindingTv();
         bindingTvMiror();

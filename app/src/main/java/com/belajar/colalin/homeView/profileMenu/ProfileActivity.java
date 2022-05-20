@@ -1,24 +1,21 @@
 package com.belajar.colalin.homeView.profileMenu;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityProfileBinding;
 
 public class ProfileActivity extends AppCompatActivity {
-    private ActivityProfileBinding binding;
-    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityProfileBinding.inflate(getLayoutInflater());
+        com.belajar.colalin.databinding.ActivityProfileBinding binding = ActivityProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         changeProfilePage(bundle.getInt("menu"));
     }
 
@@ -32,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
                 fragment = new AboutFragment();
                 break;
         }
+        assert fragment != null;
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_profile, fragment)

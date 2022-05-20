@@ -19,4 +19,6 @@
     <string name="home">Home</string>
     <string name="keterangan_golongan"><u>Keterangan Golongan</u></string>
     <string name="zero_value">0</string>
+    <string name="ex_81234567890">ex: 81234567890</string>
+    <string name="logo_register">logo register</string>
 </resources>
