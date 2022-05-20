@@ -32,6 +32,7 @@ public class DataInfoActivity extends AppCompatActivity {
             fragment = new FragmentDataToll();
             fragment.setArguments(bundle);
         }
+        assert fragment != null;
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_data_counter, fragment).commit();
