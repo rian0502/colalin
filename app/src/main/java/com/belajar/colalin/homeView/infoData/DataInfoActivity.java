@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment;
 import com.belajar.colalin.R;
 import com.belajar.colalin.databinding.ActivityDataInfoBinding;
 
-public class DataInfoActivity extends AppCompatActivity {
+public class DataInfoActivity extends AppCompatActivity{
     private Bundle bundle;
     ActivityDataInfoBinding binding;
     @Override

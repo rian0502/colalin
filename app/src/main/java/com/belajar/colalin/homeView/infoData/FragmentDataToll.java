@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.belajar.colalin.databinding.FragmentDataTollBinding;
 import com.belajar.colalin.homeView.viewModel.ViewModelDataToll;
 
-public class FragmentDataToll extends Fragment {
+public class FragmentDataToll extends Fragment{
     private FragmentDataTollBinding binding;
     private ViewModelDataToll viewModelDataToll;
     public FragmentDataToll() {
