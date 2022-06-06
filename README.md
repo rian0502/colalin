@@ -10,9 +10,4 @@ __COLALIN__
 - [x] terdapat 12 golongan kendaraan
 - [X] Penyajian data yang menggunakan chart
 
-#Note
- Aplikasi ini masih dalam tahap pengembangan, untuk saat ini hanya fokus dibagian interface user, fungsional aplikasi akan di kerjakan secara berkala.
-
-
- 
-                  
+Release in playstore : https://play.google.com/store/apps/details?id=com.belajar.colalin
