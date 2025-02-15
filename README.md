@@ -1,9 +1,6 @@
 # 🚗 COLALIN – Counter Lalu Lintas  
 
-![Platform](https://img.shields.io/badge/Platform-Android-green)  
-![Language](https://img.shields.io/badge/Java-ED8B00?logo=java&logoColor=white)  
-![Database](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white)  
-![Backend](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)  
+![Platform](https://img.shields.io/badge/Platform-Android-green) ![Language](https://img.shields.io/badge/Java-ED8B00?logo=java&logoColor=white) ![Database](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=white) ![Backend](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)  
 
 **COLALIN** adalah sebuah aplikasi **Android** yang dikembangkan menggunakan **Java**.  
 Aplikasi ini berfungsi untuk **menghitung kendaraan di jalan** dan membantu mahasiswa **Teknik Sipil** dalam mengerjakan tugas **Rekayasa Lalu Lintas**.  
