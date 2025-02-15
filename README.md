@@ -22,8 +22,7 @@ Selain itu, aplikasi ini juga dapat digunakan oleh **pihak lain** yang membutuhk
 ## 🛠️ **Teknologi yang Digunakan**  
 - **Android Development:** Java  
 - **Backend:** PHP  
-- **Database:** MySQL  
-- **Cloud Storage:** (Tambahkan jika menggunakan Firebase atau server lain)  
+- **Database:** MySQL
 
 ---
 
